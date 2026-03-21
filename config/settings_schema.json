@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "accent_color",
+        "label": "Accent Color (Buttons)",
+        "default": "#e74c3c"
+      },
+      {
+        "type": "color",
+        "id": "primary_dark",
+        "label": "Primary Dark",
+        "default": "#1a1a1a"
+      },
+      {
+        "type": "color",
+        "id": "background_light",
+        "label": "Background Light",
+        "default": "#f5f5f5"
+      }
+    ]
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo_image",
+        "label": "Logo Image"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 50,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "label": "Logo Width",
+        "default": 200
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Heading Font",
+        "default": "system-ui"
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "Body Font",
+        "default": "system-ui"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "twitter_url",
+        "label": "Twitter URL"
+      },
+      {
+        "type": "text",
+        "id": "instagram_url",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "text",
+        "id": "youtube_url",
+        "label": "YouTube URL"
+      }
+    ]
+  }
+]
