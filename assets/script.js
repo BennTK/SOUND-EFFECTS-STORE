@@ -100,11 +100,14 @@ function updateCartCount() {
    MOBILE MENU TOGGLE
    ============================================ */
 function initializeMobileMenu() {
-  // Add mobile menu toggle if needed
-  const navMenu = document.querySelector('.nav-menu');
-  
-  if (window.innerWidth <= 768 && navMenu) {
-    navMenu.style.display = 'none';
+  const hamburger = document.getElementById('hamburger-btn');
+  const nav = document.querySelector('.header-nav');
+
+  if (hamburger && nav) {
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      nav.classList.toggle('open');
+    });
   }
 }
 

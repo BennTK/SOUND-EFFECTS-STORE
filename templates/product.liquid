@@ -1,0 +1,91 @@
+<div class="product-page">
+  <div class="product-page-container">
+    <div class="product-page-image">
+      {% if product.featured_image %}
+        <img
+          src="{{ product.featured_image | img_url: '800x800' }}"
+          alt="{{ product.title | escape }}"
+          class="product-main-image"
+        >
+      {% endif %}
+    </div>
+
+    <div class="product-page-details">
+      <h1 class="product-page-title">{{ product.title }}</h1>
+
+      <div class="product-page-price">
+        {% if product.compare_at_price > product.price %}
+          <span class="original-price">{{ product.compare_at_price | money }}</span>
+        {% endif %}
+        <span class="sale-price">{{ product.price | money }}</span>
+      </div>
+
+      <div class="product-page-description">
+        {{ product.description }}
+      </div>
+
+      <form method="post" action="/cart/add" class="add-to-cart-form">
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+        <button type="submit" class="cta-button">Add to Cart</button>
+      </form>
+
+      {% if product.tags.size > 0 %}
+        <div class="product-page-tags">
+          {% for tag in product.tags %}
+            <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-page {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .product-page-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .product-main-image {
+    width: 100%;
+    border-radius: 8px;
+  }
+  .product-page-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .product-page-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  .product-page-description {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  .product-page-tags {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .tag {
+    background: #f0f0f0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #555;
+  }
+  @media (max-width: 768px) {
+    .product-page-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

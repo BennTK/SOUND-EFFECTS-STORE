@@ -21,7 +21,7 @@ Featured Products Section with 3-column grid
       
       <div class="products-grid">
         {% for product in collections.all.products limit: 12 %}
-          {% include 'product-card' %}
+          {% render 'product-card', product: product %}
         {% endfor %}
       </div>
       
