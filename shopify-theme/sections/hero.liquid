@@ -1,0 +1,73 @@
+{%- comment -%}
+Hero Section
+{%- endcomment -%}
+
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">ll Sound Effects</h1>
+    <p class="hero-description">
+      Premium sound effect bundles for creators, filmmakers, and producers. 
+      Professionally recorded and curated collections to elevate your projects.
+    </p>
+    <a href="/collections/all" class="hero-cta">Browse Sounds</a>
+  </div>
+</section>
+
+{% stylesheet %}
+  .hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #fff;
+    padding: 6rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    line-height: 1.1;
+  }
+  
+  .hero-description {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  
+  .hero-cta {
+    display: inline-block;
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .hero-cta:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 768px) {
+    .hero {
+      padding: 3rem 1.5rem;
+    }
+    
+    .hero-title {
+      font-size: 2rem;
+    }
+    
+    .hero-description {
+      font-size: 1rem;
+    }
+  }
+{% endstylesheet %}

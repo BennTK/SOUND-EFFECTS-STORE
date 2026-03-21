@@ -1,0 +1,93 @@
+{%- comment -%}
+Social Proof Section - Companies using our assets
+{%- endcomment -%}
+
+<section class="social-proof">
+  <div class="social-proof-container">
+    <h2 class="section-title">Our assets are used by</h2>
+    
+    <div class="logos-grid">
+      <!-- Logo 1 -->
+      <div class="logo-item">
+        <div class="logo-placeholder">Company 1</div>
+      </div>
+      <!-- Logo 2 -->
+      <div class="logo-item">
+        <div class="logo-placeholder">Company 2</div>
+      </div>
+      <!-- Logo 3 -->
+      <div class="logo-item">
+        <div class="logo-placeholder">Company 3</div>
+      </div>
+      <!-- Logo 4 -->
+      <div class="logo-item">
+        <div class="logo-placeholder">Company 4</div>
+      </div>
+      <!-- Logo 5 -->
+      <div class="logo-item">
+        <div class="logo-placeholder">Company 5</div>
+      </div>
+      <!-- Logo 6 -->
+      <div class="logo-item">
+        <div class="logo-placeholder">Company 6</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .social-proof {
+    background-color: #2d2d2d;
+    color: #fff;
+    padding: 4rem 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .social-proof-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .social-proof .section-title {
+    color: #fff;
+    margin-bottom: 3rem;
+  }
+  
+  .logos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logo-placeholder {
+    width: 120px;
+    height: 60px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .logos-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .social-proof {
+      padding: 2rem 1.5rem;
+    }
+  }
+{% endstylesheet %}
