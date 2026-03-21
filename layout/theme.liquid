@@ -1,24 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ request.locale.iso_code }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page_title }}</title>
-  <link rel="stylesheet" href="{{ 'styles.css' | asset_url }}">
-  {% block head %}{% endblock %}
+  <title>{{ page_title }}{% if page_title != shop.name %} - {{ shop.name }}{% endif %}</title>
+  <meta name="description" content="{{ page_description | escape }}">
+  {{ content_for_header }}
+  {{ 'styles.css' | asset_url | stylesheet_tag }}
 </head>
 <body>
-  <!-- Header / Navigation -->
   {% section 'header' %}
-  
-  <!-- Main Content -->
-  <main id="main-content">
+
+  <main id="main-content" role="main">
     {{ content_for_layout }}
   </main>
-  
-  <!-- Footer -->
+
   {% section 'footer' %}
-  
-  <script src="{{ 'script.js' | asset_url }}"></script>
+
+  {{ 'script.js' | asset_url | script_tag }}
 </body>
 </html>
