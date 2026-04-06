@@ -1,4 +1,4 @@
-{%- comment -%}Product Type Showcase - 3 category cards{%- endcomment -%}
+{%- comment -%}Product Type Showcase - 2 big category cards{%- endcomment -%}
 
 <section class="ss-cats">
   <div class="ss-cats__container">
@@ -16,20 +16,22 @@
           <div class="ss-cat-card__noise"></div>
           <div class="ss-cat-card__gradient"></div>
         </div>
-        <div class="ss-cat-card__icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path d="M15.54 8.46a5 5 0 010 7.07"></path>
-            <path d="M19.07 4.93a10 10 0 010 14.14"></path>
-          </svg>
-        </div>
-        <div class="ss-cat-card__body">
-          <span class="ss-cat-card__label">500+ Sounds</span>
-          <h3 class="ss-cat-card__title">Sound Effects</h3>
-          <p class="ss-cat-card__desc">Drones, impacts, foley, ambience & more. Professional-grade recordings for every scene.</p>
-        </div>
-        <div class="ss-cat-card__footer">
-          <span class="ss-cat-card__cta">Browse Sound Effects <span class="ss-cat-card__arrow">→</span></span>
+        <div class="ss-cat-card__content">
+          <div class="ss-cat-card__icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 010 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 010 14.14"></path>
+            </svg>
+          </div>
+          <div class="ss-cat-card__body">
+            <span class="ss-cat-card__label">500+ Sounds</span>
+            <h3 class="ss-cat-card__title">Sound Effects</h3>
+            <p class="ss-cat-card__desc">Drones, impacts, foley, ambience & more. Professional-grade recordings for every scene.</p>
+          </div>
+          <div class="ss-cat-card__footer">
+            <span class="ss-cat-card__cta">Browse Sound Effects <span class="ss-cat-card__arrow">→</span></span>
+          </div>
         </div>
       </a>
 
@@ -40,20 +42,22 @@
           <div class="ss-cat-card__gradient"></div>
         </div>
         <div class="ss-cat-card__tag">Best Value</div>
-        <div class="ss-cat-card__icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <polyline points="21 8 21 21 3 21 3 8"></polyline>
-            <rect x="1" y="3" width="22" height="5"></rect>
-            <line x1="10" y1="12" x2="14" y2="12"></line>
-          </svg>
-        </div>
-        <div class="ss-cat-card__body">
-          <span class="ss-cat-card__label">Save Up to 40%</span>
-          <h3 class="ss-cat-card__title">Bundles</h3>
-          <p class="ss-cat-card__desc">Curated multi-pack collections at a fraction of the price. Everything you need in one download.</p>
-        </div>
-        <div class="ss-cat-card__footer">
-          <span class="ss-cat-card__cta">Browse Bundles <span class="ss-cat-card__arrow">→</span></span>
+        <div class="ss-cat-card__content">
+          <div class="ss-cat-card__icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+              <polyline points="21 8 21 21 3 21 3 8"></polyline>
+              <rect x="1" y="3" width="22" height="5"></rect>
+              <line x1="10" y1="12" x2="14" y2="12"></line>
+            </svg>
+          </div>
+          <div class="ss-cat-card__body">
+            <span class="ss-cat-card__label">Save Up to 40%</span>
+            <h3 class="ss-cat-card__title">Bundles</h3>
+            <p class="ss-cat-card__desc">Curated multi-pack collections at a fraction of the price. Everything you need in one download.</p>
+          </div>
+          <div class="ss-cat-card__footer">
+            <span class="ss-cat-card__cta">Browse Bundles <span class="ss-cat-card__arrow">→</span></span>
+          </div>
         </div>
       </a>
 
@@ -79,31 +83,26 @@
   }
 
   .ss-cats__grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
   }
 
-  /* Card — 3840:2000 ≈ 1.92:1 aspect ratio */
+  /* Card — big rectangle */
   .ss-cat-card {
     position: relative;
-    display: grid;
-    grid-template-columns: 72px 1fr auto;
-    grid-template-rows: 1fr auto;
-    align-items: center;
-    gap: 0 2rem;
-    padding: 2.25rem 2.5rem;
-    border-radius: 6px;
+    display: block;
+    border-radius: 8px;
     border: 1px solid #1e1e1e;
     overflow: hidden;
     text-decoration: none;
-    aspect-ratio: 389 / 67;
+    min-height: 420px;
     transition: border-color 0.25s, transform 0.25s;
   }
 
   .ss-cat-card:hover {
-    border-color: rgba(201,168,76,0.25);
-    transform: translateY(-2px);
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-3px);
   }
 
   /* Backgrounds */
@@ -114,15 +113,11 @@
   }
 
   .ss-cat-card__bg--sfx {
-    background: linear-gradient(135deg, #0c0e14 0%, #111520 60%, #0d1018 100%);
-  }
-
-  .ss-cat-card__bg--ost {
-    background: linear-gradient(135deg, #0e0c10 0%, #14101a 60%, #100d14 100%);
+    background: linear-gradient(145deg, #0c0e14 0%, #111520 60%, #0d1018 100%);
   }
 
   .ss-cat-card__bg--bundle {
-    background: linear-gradient(135deg, #100e08 0%, #1a1608 60%, #12100a 100%);
+    background: linear-gradient(145deg, #100e08 0%, #1a1608 60%, #12100a 100%);
   }
 
   .ss-cat-card__noise {
@@ -136,7 +131,7 @@
   .ss-cat-card__gradient {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.04) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.06) 0%, transparent 60%);
     transition: opacity 0.3s;
     opacity: 0;
   }
@@ -145,28 +140,38 @@
     opacity: 1;
   }
 
+  /* Content wrapper — stacked vertically inside card */
+  .ss-cat-card__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 420px;
+    padding: 3rem;
+    gap: 1.5rem;
+  }
+
   /* Tag (Best Value) */
   .ss-cat-card__tag {
     position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
+    top: 2rem;
+    right: 2rem;
     font-size: 0.65rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #0a0a0a;
     background: #c9a84c;
-    padding: 0.3rem 0.75rem;
+    padding: 0.35rem 0.85rem;
     border-radius: 2px;
     font-weight: 700;
-    z-index: 1;
+    z-index: 2;
   }
 
   /* Icon */
   .ss-cat-card__icon {
-    position: relative;
-    z-index: 1;
-    width: 56px;
-    height: 56px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     background: rgba(201,168,76,0.07);
     border: 1px solid rgba(201,168,76,0.15);
@@ -185,8 +190,7 @@
 
   /* Body */
   .ss-cat-card__body {
-    position: relative;
-    z-index: 1;
+    flex: 1;
   }
 
   .ss-cat-card__label {
@@ -195,33 +199,36 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: #c9a84c;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.6rem;
     font-weight: 500;
   }
 
   .ss-cat-card__title {
-    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
     font-weight: 800;
     color: #fff;
-    margin: 0 0 0.5rem;
+    margin: 0 0 1rem;
     letter-spacing: -0.02em;
     line-height: 1.1;
   }
 
   .ss-cat-card__desc {
-    font-size: 0.875rem;
+    font-size: 0.92rem;
     color: #555;
-    line-height: 1.65;
+    line-height: 1.7;
     margin: 0;
-    max-width: 480px;
   }
 
   /* Footer CTA */
   .ss-cat-card__footer {
-    position: relative;
-    z-index: 1;
-    padding-left: 2rem;
-    flex-shrink: 0;
+    border-top: 1px solid #1e1e1e;
+    padding-top: 1.5rem;
+    margin-top: auto;
+    transition: border-color 0.25s;
+  }
+
+  .ss-cat-card:hover .ss-cat-card__footer {
+    border-color: rgba(201,168,76,0.15);
   }
 
   .ss-cat-card__cta {
@@ -246,24 +253,23 @@
   }
 
   .ss-cat-card:hover .ss-cat-card__arrow {
-    transform: translateX(4px);
+    transform: translateX(5px);
   }
 
   @media (max-width: 768px) {
-    .ss-cat-card {
-      grid-template-columns: 48px 1fr;
-      aspect-ratio: auto;
-      padding: 1.75rem 1.5rem;
+    .ss-cats__grid {
+      grid-template-columns: 1fr;
     }
-    .ss-cat-card__footer {
-      grid-column: 1 / -1;
-      padding-left: 0;
-      padding-top: 1rem;
-      border-top: 1px solid #1a1a1a;
+    .ss-cat-card,
+    .ss-cat-card__content {
+      min-height: 320px;
+    }
+    .ss-cat-card__content {
+      padding: 2rem;
     }
     .ss-cat-card__tag {
-      top: 1rem;
-      right: 1rem;
+      top: 1.5rem;
+      right: 1.5rem;
     }
   }
 {% endstylesheet %}
