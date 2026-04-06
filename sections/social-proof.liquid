@@ -15,11 +15,10 @@
 
   </div>
 
-  <!-- Scroll-locked testimonial carousel -->
-  <div class="ss-carousel-outer" id="ss-carousel-outer">
-    <div class="ss-carousel-sticky" id="ss-carousel-sticky">
-      <div class="ss-carousel-viewport">
-        <div class="ss-carousel-track" id="ss-carousel-track">
+  <!-- Testimonials row -->
+  <div class="ss-carousel-outer">
+    <div class="ss-carousel-viewport">
+        <div class="ss-carousel-track">
 
           <div class="ss-tcard">
             <div class="ss-tcard__img">
@@ -143,15 +142,6 @@
 
         </div>
       </div>
-
-      <!-- Progress dots -->
-      <div class="ss-carousel-dots" id="ss-carousel-dots">
-        {% for i in (1..8) %}
-          <div class="ss-carousel-dot{% if forloop.first %} active{% endif %}"></div>
-        {% endfor %}
-      </div>
-
-    </div>
   </div>
 
   <div class="ss-proof__container">
@@ -265,113 +255,82 @@
     letter-spacing: 0.05em;
   }
 
-  /* ── Carousel ── */
+  /* ── Testimonials ── */
   .ss-carousel-outer {
-    position: relative;
-  }
-
-  .ss-carousel-sticky {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    padding: 1.5rem 0;
+    padding: 0 2rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
   }
 
   .ss-carousel-viewport {
     width: 100%;
-    overflow: hidden;
-    perspective: 1200px;
-    perspective-origin: 50% 50%;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
 
+  .ss-carousel-viewport::-webkit-scrollbar { display: none; }
+
   .ss-carousel-track {
-    display: flex;
-    gap: 1.5rem;
-    padding: 1rem 2rem;
-    will-change: transform;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1px;
+    background: #1a1a1a;
+    border: 1px solid #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    min-width: 900px;
   }
 
   .ss-tcard {
-    flex: 0 0 360px;
-    background: #111;
-    border: 1px solid #1e1e1e;
-    border-radius: 8px;
-    padding: 1.5rem;
+    background: #0e0e0e;
+    padding: 1.4rem 1.25rem 1.2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    transform-style: preserve-3d;
-    will-change: transform;
+    gap: 0.75rem;
+    transition: background 0.2s;
   }
 
-  .ss-tcard:hover { border-color: #2a2a2a; }
+  .ss-tcard:hover { background: #121212; }
 
-  .ss-tcard__img {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: linear-gradient(145deg, #0e0e0e, #161616);
-    border: 1px solid #1e1e1e;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
+  .ss-tcard__img { display: none; }
 
-  .ss-tcard__stars { color: #c9a84c; font-size: 0.85rem; letter-spacing: 0.1em; }
+  .ss-tcard__stars { color: #c9a84c; font-size: 0.7rem; letter-spacing: 0.12em; }
 
   .ss-tcard__quote {
-    font-size: 0.9rem;
-    color: #888;
-    line-height: 1.75;
+    font-size: 0.8rem;
+    color: #777;
+    line-height: 1.7;
     margin: 0;
-    font-style: italic;
     flex: 1;
   }
 
   .ss-tcard__author {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding-top: 1rem;
-    border-top: 1px solid #1a1a1a;
+    gap: 0.6rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid #181818;
+    margin-top: auto;
   }
 
   .ss-tcard__avatar {
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #1e1a0e, #2d2510);
-    border: 1px solid rgba(201,168,76,0.2);
+    background: #161410;
+    border: 1px solid rgba(201,168,76,0.15);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.65rem;
+    font-size: 0.55rem;
     font-weight: 700;
     color: #c9a84c;
     flex-shrink: 0;
+    letter-spacing: 0.02em;
   }
 
-  .ss-tcard__name { display: block; font-size: 0.8rem; font-weight: 600; color: #ccc; }
-  .ss-tcard__role { display: block; font-size: 0.7rem; color: #444; margin-top: 0.1rem; }
-
-  .ss-carousel-dots { display: flex; gap: 0.5rem; margin-top: 2rem; }
-
-  .ss-carousel-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #2a2a2a;
-    transition: background 0.3s, transform 0.3s;
-  }
-
-  .ss-carousel-dot.active { background: #c9a84c; transform: scale(1.3); }
+  .ss-tcard__name { display: block; font-size: 0.72rem; font-weight: 600; color: #bbb; line-height: 1.2; }
+  .ss-tcard__role { display: block; font-size: 0.62rem; color: #3a3a3a; margin-top: 0.1rem; }
 
   /* Reels */
   .ss-reels { margin-bottom: 4rem; padding-top: 3.5rem; border-top: 1px solid #161616; }
@@ -450,14 +409,13 @@
   .ss-proof__badges-divider { width: 1px; height: 48px; background: #1e1e1e; align-self: center; }
 
   @media (max-width: 768px) {
-    .ss-carousel-sticky { height: auto; position: relative; padding: 2rem 0; }
-    .ss-carousel-outer { height: auto !important; }
-    .ss-tcard { flex: 0 0 280px; }
+    .ss-carousel-track { grid-template-columns: repeat(3, minmax(220px, 1fr)); }
     .ss-reels__grid { grid-template-columns: repeat(3, 1fr); }
     .ss-proof__badges { gap: 2rem; }
   }
 
   @media (max-width: 480px) {
+    .ss-carousel-track { grid-template-columns: repeat(2, minmax(200px, 1fr)); }
     .ss-reels__grid { grid-template-columns: repeat(2, 1fr); }
   }
 {% endstylesheet %}
@@ -490,59 +448,6 @@
     countObs.observe(countEl);
   }
 
-  /* ── Scroll-locked carousel ── */
-  var outer = document.getElementById('ss-carousel-outer');
-  var track = document.getElementById('ss-carousel-track');
-  var dots  = document.querySelectorAll('.ss-carousel-dot');
-
-  if (!outer || !track) return;
-
-  if (window.innerWidth <= 768) return;
-
-  var cardW     = 360 + 24;
-  var cardCount = track.children.length;
-  var overflow  = 0;
-
-  function setup() {
-    var viewW = outer.offsetWidth;
-    overflow  = Math.max(0, cardCount * cardW - viewW);
-    outer.style.height = (window.innerHeight + overflow) + 'px';
-  }
-
-  function onScroll() {
-    var rect     = outer.getBoundingClientRect();
-    var scrolled = -rect.top;
-    var progress = Math.max(0, Math.min(1, scrolled / overflow));
-    var tx       = -(progress * overflow);
-
-    track.style.transform = 'translateX(' + tx + 'px)';
-
-    var viewCX = window.innerWidth / 2;
-    var cards  = track.querySelectorAll('.ss-tcard');
-    cards.forEach(function(card) {
-      var r      = card.getBoundingClientRect();
-      var cardCX = r.left + r.width / 2;
-      var dist   = cardCX - viewCX;
-      var maxD   = window.innerWidth * 0.6;
-      var ratio  = Math.max(-1, Math.min(1, dist / maxD));
-      var rotY   = ratio * 28;
-      var rotX   = Math.abs(ratio) * -6;
-      var scale  = 1 - Math.abs(ratio) * 0.08;
-      var fadeZ  = Math.abs(ratio) * -60;
-      card.style.transform =
-        'perspective(900px) translateZ(' + fadeZ + 'px) rotateY(' + rotY + 'deg) rotateX(' + rotX + 'deg) scale(' + scale + ')';
-      card.style.opacity = 1 - Math.abs(ratio) * 0.4;
-    });
-
-    var step   = overflow / (cardCount - 1);
-    var active = Math.round((progress * overflow) / step);
-    dots.forEach(function(d, i) { d.classList.toggle('active', i === active); });
-  }
-
-  setup();
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', function() { setup(); onScroll(); });
-  onScroll();
 
 })();
 {% endjavascript %}
