@@ -1,82 +1,36 @@
-{%- comment -%}New Release Banner Section - Sonority Sound{%- endcomment -%}
+{%- comment -%}New Release Section - Sonority Sound{%- endcomment -%}
 
 <section class="ss-nr">
-  <div class="ss-nr__noise"></div>
-  <div class="ss-nr__glow-top"></div>
 
   <div class="ss-nr__inner">
 
-    <!-- Section heading -->
-    <div class="ss-nr__heading">
-      <span class="ss-nr__heading-line"></span>
-      <span class="ss-nr__heading-text">Special New Release</span>
-      <span class="ss-nr__heading-line"></span>
+    <!-- NEW RELEASE label -->
+    <div class="ss-nr__label">
+      <span class="ss-nr__label-pulse"></span>
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      NEW RELEASE
     </div>
 
-    <a href="/collections/sound-effects" class="ss-nr__card">
+    <a href="/collections/sound-effects" class="ss-nr__layout">
 
-      <!-- NEW RELEASE label — top left -->
-      <div class="ss-nr__label">
-        <span class="ss-nr__label-pulse"></span>
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        NEW RELEASE
+      <!-- Photo slot -->
+      <div class="ss-nr__photo">
+        <div class="ss-nr__photo-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.15)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Add product photo</span>
+        </div>
       </div>
 
-      <!-- Drone visual -->
-      <div class="ss-nr__visual">
-        <div class="ss-nr__drone-glow"></div>
-        <!-- Floating altitude lines behind the drone -->
-        <div class="ss-nr__scanlines"></div>
-        <svg class="ss-nr__drone-svg" viewBox="0 0 340 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- wide horizontal scan / motion lines -->
-          <line x1="0" y1="110" x2="340" y2="110" stroke="rgba(201,168,76,0.07)" stroke-width="1"/>
-          <line x1="0" y1="74"  x2="340" y2="74"  stroke="rgba(201,168,76,0.04)" stroke-width="1"/>
-          <line x1="0" y1="146" x2="340" y2="146" stroke="rgba(201,168,76,0.04)" stroke-width="1"/>
-          <line x1="0" y1="38"  x2="340" y2="38"  stroke="rgba(201,168,76,0.025)" stroke-width="1"/>
-          <line x1="0" y1="182" x2="340" y2="182" stroke="rgba(201,168,76,0.025)" stroke-width="1"/>
-          <!-- long motion trails -->
-          <line x1="2"   y1="110" x2="70"  y2="110" stroke="rgba(201,168,76,0.35)" stroke-width="2" stroke-dasharray="6 5"/>
-          <line x1="270" y1="110" x2="338" y2="110" stroke="rgba(201,168,76,0.35)" stroke-width="2" stroke-dasharray="6 5"/>
-          <!-- drone body -->
-          <rect x="136" y="96" width="68" height="28" rx="6" fill="rgba(201,168,76,0.13)" stroke="rgba(201,168,76,0.8)" stroke-width="2"/>
-          <line x1="136" y1="110" x2="204" y2="110" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
-          <rect x="152" y="100" width="36" height="20" rx="3" fill="rgba(201,168,76,0.06)" stroke="rgba(201,168,76,0.2)" stroke-width="0.8"/>
-          <!-- arms -->
-          <line x1="136" y1="101" x2="88"  y2="70"  stroke="rgba(201,168,76,0.7)" stroke-width="2"/>
-          <line x1="204" y1="101" x2="252" y2="70"  stroke="rgba(201,168,76,0.7)" stroke-width="2"/>
-          <line x1="136" y1="119" x2="88"  y2="150" stroke="rgba(201,168,76,0.7)" stroke-width="2"/>
-          <line x1="204" y1="119" x2="252" y2="150" stroke="rgba(201,168,76,0.7)" stroke-width="2"/>
-          <!-- rotors -->
-          <ellipse cx="88"  cy="67"  rx="32" ry="8" stroke="rgba(201,168,76,0.9)" stroke-width="1.5" fill="rgba(201,168,76,0.07)"/>
-          <ellipse cx="252" cy="67"  rx="32" ry="8" stroke="rgba(201,168,76,0.9)" stroke-width="1.5" fill="rgba(201,168,76,0.07)"/>
-          <ellipse cx="88"  cy="153" rx="32" ry="8" stroke="rgba(201,168,76,0.9)" stroke-width="1.5" fill="rgba(201,168,76,0.07)"/>
-          <ellipse cx="252" cy="153" rx="32" ry="8" stroke="rgba(201,168,76,0.9)" stroke-width="1.5" fill="rgba(201,168,76,0.07)"/>
-          <!-- rotor hubs -->
-          <circle cx="88"  cy="67"  r="4.5" fill="rgba(201,168,76,0.6)"/>
-          <circle cx="252" cy="67"  r="4.5" fill="rgba(201,168,76,0.6)"/>
-          <circle cx="88"  cy="153" r="4.5" fill="rgba(201,168,76,0.6)"/>
-          <circle cx="252" cy="153" r="4.5" fill="rgba(201,168,76,0.6)"/>
-          <!-- camera gimbal -->
-          <circle cx="170" cy="136" r="12" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.6)" stroke-width="1.5"/>
-          <circle cx="170" cy="136" r="6"  fill="rgba(201,168,76,0.25)"/>
-          <circle cx="170" cy="136" r="2.5" fill="rgba(201,168,76,0.7)"/>
-          <!-- LED indicator -->
-          <circle cx="170" cy="96" r="3" fill="#c9a84c" opacity="0.95"/>
-          <!-- wide body glow -->
-          <ellipse cx="170" cy="110" rx="60" ry="32" fill="rgba(201,168,76,0.05)"/>
-        </svg>
-      </div>
-
-      <!-- Text side -->
+      <!-- Text -->
       <div class="ss-nr__body">
         <p class="ss-nr__eyebrow">Drone Fly By Collection</p>
-        <p class="ss-nr__title">Revolutionary<br>Drone Fly By<br>Sound Effects</p>
-        <p class="ss-nr__desc">Cinematic aerial audio captured from real drone fly-bys &mdash; engineered for film, games, and immersive media.</p>
-        <p class="ss-nr__available"><strong>Now Available</strong></p>
+        <h2 class="ss-nr__title">Revolutionary Drone Fly By Sound Effects</h2>
+        <p class="ss-nr__desc">Cinematic aerial audio captured from real drone fly-bys — engineered for film, games, and immersive media.</p>
+        <p class="ss-nr__available">Now Available</p>
         <div class="ss-nr__actions">
           <span class="ss-nr__cta-btn">
             Shop the Drop
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
           </span>
           <span class="ss-nr__preview">Preview samples &rarr;</span>
         </div>
@@ -87,134 +41,39 @@
 </section>
 
 {% stylesheet %}
-  /* ── New Release Section ── */
   .ss-nr {
-    background: #080808;
+    background: #ffffff;
+    padding: 4rem 0 4.5rem;
     position: relative;
-    overflow: hidden;
-    padding: 3.5rem 0 4rem;
-  }
-
-  .ss-nr__noise {
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    background-size: 256px;
-    pointer-events: none;
-    opacity: 0.5;
-  }
-
-  .ss-nr__glow-top {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 900px;
-    height: 300px;
-    background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  /* Section heading row */
-  .ss-nr__heading {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    margin-bottom: 1.75rem;
-    padding: 0 2rem;
-  }
-
-  .ss-nr__heading-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.25), transparent);
-  }
-
-  .ss-nr__heading-text {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: #c9a84c;
-    white-space: nowrap;
   }
 
   .ss-nr__inner {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  /* The card */
-  .ss-nr__card {
-    display: grid;
-    grid-template-columns: 480px 1fr;
-    align-items: stretch;
-    width: 100%;
-    background: linear-gradient(135deg, #111 0%, #0f0f0f 60%, #0b0b0b 100%);
-    border: 1px solid rgba(201,168,76,0.28);
-    border-radius: 20px;
-    text-decoration: none;
-    text-align: left;
+    padding: 0 3rem;
     position: relative;
-    overflow: hidden;
-    transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
-    min-height: 360px;
-    box-shadow: 0 4px 60px rgba(0,0,0,0.5);
-  }
-
-  .ss-nr__card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, rgba(201,168,76,0.06) 0%, transparent 45%);
-    pointer-events: none;
-    border-radius: inherit;
-  }
-
-  .ss-nr__card::after {
-    content: '';
-    position: absolute;
-    right: -80px;
-    bottom: -80px;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 65%);
-    pointer-events: none;
-  }
-
-  .ss-nr__card:hover {
-    border-color: rgba(201,168,76,0.55);
-    box-shadow: 0 0 80px rgba(201,168,76,0.13), 0 8px 50px rgba(0,0,0,0.6);
-    transform: translateY(-2px);
   }
 
   /* NEW RELEASE label */
   .ss-nr__label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: linear-gradient(90deg, #a07828 0%, #e8c96a 35%, #d4ac50 65%, #a07828 100%);
+    gap: 0.45rem;
+    background: linear-gradient(90deg, #a07828 0%, #e8c96a 40%, #d4ac50 70%, #a07828 100%);
     color: #0a0a0a;
-    font-size: 0.68rem;
+    font-size: 0.62rem;
     font-weight: 900;
     letter-spacing: 0.26em;
     text-transform: uppercase;
-    padding: 0.6rem 1.6rem 0.6rem 1.1rem;
-    border-radius: 20px 0 20px 0;
-    z-index: 3;
-    box-shadow: 2px 2px 20px rgba(201,168,76,0.5), 0 0 0 1px rgba(201,168,76,0.25);
+    padding: 0.45rem 1rem;
+    border-radius: 3px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(201,168,76,0.35);
   }
 
   .ss-nr__label-pulse {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     background: #0a0a0a;
     border-radius: 50%;
     flex-shrink: 0;
@@ -226,38 +85,43 @@
     50% { opacity: 0.4; transform: scale(1.6); }
   }
 
-  /* Drone side */
-  .ss-nr__visual {
+  /* Two-column layout */
+  .ss-nr__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  /* Photo slot */
+  .ss-nr__photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #f2f2f2;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    overflow: hidden;
     position: relative;
+  }
+
+  .ss-nr__photo-placeholder {
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 4rem 2rem 3rem;
-    border-right: 1px solid rgba(201,168,76,0.1);
-    background: linear-gradient(135deg, rgba(201,168,76,0.03) 0%, transparent 60%);
-  }
-
-  .ss-nr__drone-glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 55%, rgba(201,168,76,0.14) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  .ss-nr__drone-svg {
-    width: 100%;
-    max-width: 380px;
-    height: auto;
-    position: relative;
-    z-index: 1;
+    gap: 0.75rem;
+    color: #bbb;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
   }
 
   /* Text side */
   .ss-nr__body {
-    padding: 4rem 3.5rem 3rem 3rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 1.1rem;
   }
 
@@ -271,9 +135,9 @@
   }
 
   .ss-nr__title {
-    font-size: clamp(2rem, 3.5vw, 3.25rem);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
     font-weight: 900;
-    color: #fff;
+    color: #0a0a0a;
     margin: 0;
     line-height: 1.1;
     letter-spacing: -0.03em;
@@ -281,22 +145,18 @@
 
   .ss-nr__desc {
     font-size: 1rem;
-    color: #5a5a5a;
+    color: #666;
     margin: 0;
     line-height: 1.7;
-    max-width: 420px;
   }
 
   .ss-nr__available {
-    font-size: 0.9rem;
-    color: #888;
-    margin: 0;
-  }
-
-  .ss-nr__available strong {
-    color: #c9a84c;
+    font-size: 0.85rem;
     font-weight: 700;
-    font-size: 1rem;
+    color: #c9a84c;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
   }
 
   .ss-nr__actions {
@@ -311,80 +171,42 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: #c9a84c;
-    color: #0a0a0a;
-    font-size: 0.82rem;
+    background: #0a0a0a;
+    color: #fff;
+    font-size: 0.8rem;
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 0.85rem 2rem;
+    padding: 0.9rem 2rem;
     border-radius: 4px;
-    transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+    transition: background 0.2s, transform 0.2s;
   }
 
-  .ss-nr__card:hover .ss-nr__cta-btn {
-    background: #e0bc6a;
+  .ss-nr__layout:hover .ss-nr__cta-btn {
+    background: #c9a84c;
+    color: #0a0a0a;
     transform: translateX(3px);
-    box-shadow: 0 6px 24px rgba(201,168,76,0.35);
   }
 
   .ss-nr__preview {
     font-size: 0.78rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
-    color: #444;
+    letter-spacing: 0.04em;
+    color: #aaa;
     transition: color 0.2s;
   }
 
-  .ss-nr__card:hover .ss-nr__preview {
-    color: #888;
-  }
-
-  @media (max-width: 1100px) {
-    .ss-nr__card {
-      grid-template-columns: 380px 1fr;
-    }
-    .ss-nr__drone-svg {
-      max-width: 320px;
-    }
+  .ss-nr__layout:hover .ss-nr__preview {
+    color: #666;
   }
 
   @media (max-width: 800px) {
-    .ss-nr {
-      padding: 2.5rem 0 3rem;
-    }
-    .ss-nr__card {
+    .ss-nr__layout {
       grid-template-columns: 1fr;
-      min-height: auto;
+      gap: 2.5rem;
     }
-    .ss-nr__visual {
-      border-right: none;
-      border-bottom: 1px solid rgba(201,168,76,0.1);
-      padding: 4.5rem 2rem 2rem;
-    }
-    .ss-nr__drone-svg {
-      max-width: 260px;
-    }
-    .ss-nr__body {
-      padding: 2.5rem 2rem 2.5rem;
-    }
-    .ss-nr__title {
-      font-size: clamp(1.8rem, 6vw, 2.5rem);
-    }
-  }
-
-  @media (max-width: 480px) {
     .ss-nr__inner {
-      padding: 0 1rem;
-    }
-    .ss-nr__heading {
-      padding: 0 1rem;
-    }
-    .ss-nr__card {
-      border-radius: 12px;
-    }
-    .ss-nr__body {
-      padding: 2rem 1.5rem 2rem;
+      padding: 0 1.5rem;
     }
   }
 {% endstylesheet %}
