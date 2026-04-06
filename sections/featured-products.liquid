@@ -1,275 +1,282 @@
-{%- comment -%}Product Type Showcase - 2 big category cards{%- endcomment -%}
+{%- comment -%}Category Showcases — Sound Effects & Bundles{%- endcomment -%}
 
-<section class="ss-cats">
-  <div class="ss-cats__container">
+<section class="ss-showcases">
 
-    <div class="ss-cats__header">
+  <!-- Section header -->
+  <div class="ss-showcases__header">
+    <div class="ss-showcases__header-inner">
       <p class="ss-section-eyebrow">Explore the Store</p>
       <h2 class="ss-section-title">Preview our high quality,<br>sound effects collections.</h2>
     </div>
-
-    <div class="ss-cats__grid">
-
-      <!-- Sound Effects -->
-      <a href="/collections/sound-effects" class="ss-cat-card">
-        <div class="ss-cat-card__bg ss-cat-card__bg--sfx">
-          <div class="ss-cat-card__noise"></div>
-          <div class="ss-cat-card__gradient"></div>
-        </div>
-        <div class="ss-cat-card__content">
-          <div class="ss-cat-card__icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-              <path d="M15.54 8.46a5 5 0 010 7.07"></path>
-              <path d="M19.07 4.93a10 10 0 010 14.14"></path>
-            </svg>
-          </div>
-          <div class="ss-cat-card__body">
-            <span class="ss-cat-card__label">500+ Sounds</span>
-            <h3 class="ss-cat-card__title">Sound Effects</h3>
-            <p class="ss-cat-card__desc">Drones, impacts, foley, ambience & more. Professional-grade recordings for every scene.</p>
-          </div>
-          <div class="ss-cat-card__footer">
-            <span class="ss-cat-card__cta">Browse Sound Effects <span class="ss-cat-card__arrow">→</span></span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Bundles -->
-      <a href="/collections/bundles" class="ss-cat-card ss-cat-card--highlight">
-        <div class="ss-cat-card__bg ss-cat-card__bg--bundle">
-          <div class="ss-cat-card__noise"></div>
-          <div class="ss-cat-card__gradient"></div>
-        </div>
-        <div class="ss-cat-card__tag">Best Value</div>
-        <div class="ss-cat-card__content">
-          <div class="ss-cat-card__icon">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-              <polyline points="21 8 21 21 3 21 3 8"></polyline>
-              <rect x="1" y="3" width="22" height="5"></rect>
-              <line x1="10" y1="12" x2="14" y2="12"></line>
-            </svg>
-          </div>
-          <div class="ss-cat-card__body">
-            <span class="ss-cat-card__label">Save Up to 40%</span>
-            <h3 class="ss-cat-card__title">Bundles</h3>
-            <p class="ss-cat-card__desc">Curated multi-pack collections at a fraction of the price. Everything you need in one download.</p>
-          </div>
-          <div class="ss-cat-card__footer">
-            <span class="ss-cat-card__cta">Browse Bundles <span class="ss-cat-card__arrow">→</span></span>
-          </div>
-        </div>
-      </a>
-
-    </div>
   </div>
+
+  <!-- Sound Effects -->
+  <a href="/collections/sound-effects" class="ss-showcase ss-showcase--dark">
+    <div class="ss-showcase__inner">
+      <div class="ss-showcase__body">
+        <p class="ss-showcase__eyebrow">500+ Professional Recordings</p>
+        <h2 class="ss-showcase__title">Sound Effects<br>Built for Modern<br>Creators</h2>
+        <p class="ss-showcase__desc">Drones, impacts, foley, ambience, and more — every sound professionally recorded and ready for film, games, podcasts, and beyond.</p>
+        <ul class="ss-showcase__features">
+          <li>Instant download, royalty-free</li>
+          <li>Individual &amp; commercial licenses</li>
+          <li>Organised &amp; metadata tagged</li>
+        </ul>
+        <div class="ss-showcase__actions">
+          <span class="ss-showcase__btn ss-showcase__btn--gold">
+            Browse Sound Effects
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+        </div>
+      </div>
+      <div class="ss-showcase__photo">
+        <div class="ss-showcase__placeholder ss-showcase__placeholder--dark">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Add collection photo</span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <!-- Bundles -->
+  <a href="/collections/bundles" class="ss-showcase ss-showcase--warm">
+    <div class="ss-showcase__inner ss-showcase__inner--flip">
+      <div class="ss-showcase__photo">
+        <div class="ss-showcase__placeholder ss-showcase__placeholder--warm">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Add collection photo</span>
+        </div>
+      </div>
+      <div class="ss-showcase__body">
+        <div class="ss-showcase__tag">Best Value</div>
+        <p class="ss-showcase__eyebrow">Save Up to 40%</p>
+        <h2 class="ss-showcase__title">Curated Sound<br>Effect Bundles</h2>
+        <p class="ss-showcase__desc">Multi-pack collections handpicked for filmmakers, game developers, and content creators. Get everything you need in one instant download.</p>
+        <ul class="ss-showcase__features">
+          <li>Massive savings vs individual packs</li>
+          <li>Handpicked complementary sounds</li>
+          <li>Commercial license included</li>
+        </ul>
+        <div class="ss-showcase__actions">
+          <span class="ss-showcase__btn ss-showcase__btn--dark">
+            Browse Bundles
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  </a>
+
 </section>
 
 {% stylesheet %}
-  .ss-cats {
+  /* ── Header ── */
+  .ss-showcases {
     background: #0a0a0a;
-    padding: 5rem 2rem;
+  }
+
+  .ss-showcases__header {
+    background: #0a0a0a;
+    padding: 5rem 3rem 3rem;
     border-top: 1px solid #161616;
   }
 
-  .ss-cats__container {
+  .ss-showcases__header-inner {
     max-width: 1200px;
     margin: 0 auto;
-  }
-
-  .ss-cats__header {
     text-align: center;
-    margin-bottom: 3rem;
   }
 
-  .ss-cats__grid {
+  /* ── Each showcase row ── */
+  .ss-showcase {
+    display: block;
+    text-decoration: none;
+    padding: 5rem 0;
+    border-top: 1px solid #161616;
+    transition: opacity 0.2s;
+  }
+
+  .ss-showcase--dark {
+    background: #0a0a0a;
+  }
+
+  .ss-showcase--warm {
+    background: linear-gradient(180deg, #0d0c08 0%, #0a0a0a 100%);
+  }
+
+  .ss-showcase__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
+    gap: 5rem;
+    align-items: center;
   }
 
-  /* Card — big rectangle */
-  .ss-cat-card {
-    position: relative;
-    display: block;
-    border-radius: 8px;
-    border: 1px solid #1e1e1e;
-    overflow: hidden;
-    text-decoration: none;
-    min-height: 420px;
-    transition: border-color 0.25s, transform 0.25s;
+  .ss-showcase__inner--flip {
+    /* photo left, text right — natural DOM order handles it */
   }
 
-  .ss-cat-card:hover {
-    border-color: rgba(201,168,76,0.3);
-    transform: translateY(-3px);
-  }
-
-  /* Backgrounds */
-  .ss-cat-card__bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-
-  .ss-cat-card__bg--sfx {
-    background: linear-gradient(145deg, #0c0e14 0%, #111520 60%, #0d1018 100%);
-  }
-
-  .ss-cat-card__bg--bundle {
-    background: linear-gradient(145deg, #100e08 0%, #1a1608 60%, #12100a 100%);
-  }
-
-  .ss-cat-card__noise {
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    background-size: 200px;
-    opacity: 0.8;
-  }
-
-  .ss-cat-card__gradient {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.06) 0%, transparent 60%);
-    transition: opacity 0.3s;
-    opacity: 0;
-  }
-
-  .ss-cat-card:hover .ss-cat-card__gradient {
-    opacity: 1;
-  }
-
-  /* Content wrapper — stacked vertically inside card */
-  .ss-cat-card__content {
-    position: relative;
-    z-index: 1;
+  /* ── Text side ── */
+  .ss-showcase__body {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    min-height: 420px;
-    padding: 3rem;
-    gap: 1.5rem;
+    gap: 1.1rem;
+    position: relative;
   }
 
-  /* Tag (Best Value) */
-  .ss-cat-card__tag {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
+  .ss-showcase__tag {
+    display: inline-block;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: #0a0a0a;
     background: #c9a84c;
-    padding: 0.35rem 0.85rem;
+    padding: 0.3rem 0.75rem;
     border-radius: 2px;
     font-weight: 700;
-    z-index: 2;
+    align-self: flex-start;
   }
 
-  /* Icon */
-  .ss-cat-card__icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: rgba(201,168,76,0.07);
-    border: 1px solid rgba(201,168,76,0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #c9a84c;
-    flex-shrink: 0;
-    transition: background 0.25s, border-color 0.25s;
-  }
-
-  .ss-cat-card:hover .ss-cat-card__icon {
-    background: rgba(201,168,76,0.12);
-    border-color: rgba(201,168,76,0.3);
-  }
-
-  /* Body */
-  .ss-cat-card__body {
-    flex: 1;
-  }
-
-  .ss-cat-card__label {
-    display: block;
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
+  .ss-showcase__eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: #c9a84c;
-    margin-bottom: 0.6rem;
-    font-weight: 500;
-  }
-
-  .ss-cat-card__title {
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 800;
-    color: #fff;
-    margin: 0 0 1rem;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-  }
-
-  .ss-cat-card__desc {
-    font-size: 0.92rem;
-    color: #555;
-    line-height: 1.7;
     margin: 0;
   }
 
-  /* Footer CTA */
-  .ss-cat-card__footer {
-    border-top: 1px solid #1e1e1e;
-    padding-top: 1.5rem;
-    margin-top: auto;
-    transition: border-color 0.25s;
+  .ss-showcase__title {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 900;
+    color: #fff;
+    margin: 0;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
   }
 
-  .ss-cat-card:hover .ss-cat-card__footer {
-    border-color: rgba(201,168,76,0.15);
+  .ss-showcase__desc {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0;
+    line-height: 1.7;
   }
 
-  .ss-cat-card__cta {
+  .ss-showcase__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ss-showcase__features li {
+    font-size: 0.82rem;
+    color: #666;
+    padding-left: 1.1rem;
+    position: relative;
+  }
+
+  .ss-showcase__features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #c9a84c;
+    font-weight: 700;
+  }
+
+  .ss-showcase__actions {
+    margin-top: 0.5rem;
+  }
+
+  .ss-showcase__btn {
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.78rem;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #444;
-    white-space: nowrap;
-    transition: color 0.2s;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.2s, color 0.2s;
   }
 
-  .ss-cat-card:hover .ss-cat-card__cta {
-    color: #c9a84c;
+  .ss-showcase__btn--gold {
+    background: #c9a84c;
+    color: #0a0a0a;
   }
 
-  .ss-cat-card__arrow {
-    transition: transform 0.2s;
+  .ss-showcase--dark:hover .ss-showcase__btn--gold {
+    background: #e0bc6a;
+    transform: translateX(3px);
   }
 
-  .ss-cat-card:hover .ss-cat-card__arrow {
-    transform: translateX(5px);
+  .ss-showcase__btn--dark {
+    background: #0a0a0a;
+    color: #fff;
+    border: 1px solid #2a2a2a;
   }
 
-  @media (max-width: 768px) {
-    .ss-cats__grid {
+  .ss-showcase--warm:hover .ss-showcase__btn--dark {
+    background: #c9a84c;
+    color: #0a0a0a;
+    border-color: #c9a84c;
+    transform: translateX(3px);
+  }
+
+  /* ── Photo slot ── */
+  .ss-showcase__photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .ss-showcase__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+  }
+
+  .ss-showcase__placeholder--dark {
+    background: #111;
+    border: 2px dashed #2a2a2a;
+    border-radius: 8px;
+    color: #333;
+  }
+
+  .ss-showcase__placeholder--warm {
+    background: #131108;
+    border: 2px dashed #2e2a18;
+    border-radius: 8px;
+    color: #3a3420;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 800px) {
+    .ss-showcase__inner,
+    .ss-showcase__inner--flip {
       grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: 0 1.5rem;
     }
-    .ss-cat-card,
-    .ss-cat-card__content {
-      min-height: 320px;
+
+    .ss-showcase__inner--flip .ss-showcase__photo {
+      order: -1;
     }
-    .ss-cat-card__content {
-      padding: 2rem;
-    }
-    .ss-cat-card__tag {
-      top: 1.5rem;
-      right: 1.5rem;
+
+    .ss-showcases__header {
+      padding: 4rem 1.5rem 2.5rem;
     }
   }
 {% endstylesheet %}
