@@ -16,12 +16,42 @@ Header & Navigation Section
     </div>
     
     <!-- Navigation Menu -->
-    <nav class="header-nav">
+    <nav class="header-nav" id="main-nav">
       <ul class="nav-menu">
-        <li><a href="/">Home</a></li>
-        <li><a href="/collections/all">All Products</a></li>
-        <li><a href="/collections">Collections</a></li>
-        <li><a href="#faq">Support</a></li>
+        <li>
+          <a href="/" class="nav-link{% if request.page_type == 'index' %} nav-link--active{% endif %}">Home</a>
+        </li>
+        <li>
+          <a href="/collections/sound-effects" class="nav-link{% if request.page_type == 'collection' and collection.handle == 'sound-effects' %} nav-link--active{% endif %}">Sound Effects</a>
+        </li>
+        <li>
+          <a href="/collections/soundtracks" class="nav-link{% if request.page_type == 'collection' and collection.handle == 'soundtracks' %} nav-link--active{% endif %}">Soundtracks</a>
+        </li>
+        <li>
+          <a href="/collections/bundles" class="nav-link{% if request.page_type == 'collection' and collection.handle == 'bundles' %} nav-link--active{% endif %}">Bundles</a>
+        </li>
+        <li>
+          <a href="/pages/memberships" class="nav-link{% if request.page_type == 'page' and page.handle == 'memberships' %} nav-link--active{% endif %}">Memberships</a>
+        </li>
+        <li>
+          <a href="/pages/affiliate" class="nav-link{% if request.page_type == 'page' and page.handle == 'affiliate' %} nav-link--active{% endif %}">Affiliate</a>
+        </li>
+        <li>
+          <a href="/pages/support" class="nav-link{% if request.page_type == 'page' and page.handle == 'support' %} nav-link--active{% endif %}">Support</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+      <ul class="mobile-nav__menu">
+        <li><a href="/" class="mobile-nav__link{% if request.page_type == 'index' %} mobile-nav__link--active{% endif %}">Home</a></li>
+        <li><a href="/collections/sound-effects" class="mobile-nav__link{% if request.page_type == 'collection' and collection.handle == 'sound-effects' %} mobile-nav__link--active{% endif %}">Sound Effects</a></li>
+        <li><a href="/collections/soundtracks" class="mobile-nav__link{% if request.page_type == 'collection' and collection.handle == 'soundtracks' %} mobile-nav__link--active{% endif %}">Soundtracks</a></li>
+        <li><a href="/collections/bundles" class="mobile-nav__link{% if request.page_type == 'collection' and collection.handle == 'bundles' %} mobile-nav__link--active{% endif %}">Bundles</a></li>
+        <li><a href="/pages/memberships" class="mobile-nav__link{% if request.page_type == 'page' and page.handle == 'memberships' %} mobile-nav__link--active{% endif %}">Memberships</a></li>
+        <li><a href="/pages/affiliate" class="mobile-nav__link{% if request.page_type == 'page' and page.handle == 'affiliate' %} mobile-nav__link--active{% endif %}">Affiliate</a></li>
+        <li><a href="/pages/support" class="mobile-nav__link{% if request.page_type == 'page' and page.handle == 'support' %} mobile-nav__link--active{% endif %}">Support</a></li>
       </ul>
     </nav>
     
@@ -105,13 +135,23 @@ Header & Navigation Section
   }
   
   .nav-menu a {
-    color: #fff;
+    color: #999;
     text-decoration: none;
-    transition: color 0.3s ease;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
   }
-  
+
   .nav-menu a:hover {
-    color: #e74c3c;
+    color: #fff;
+  }
+
+  .nav-link--active {
+    color: #c9a84c !important;
+    border-bottom-color: #c9a84c !important;
   }
   
   .header-icons {
@@ -130,14 +170,14 @@ Header & Navigation Section
   }
   
   .icon-link:hover {
-    color: #e74c3c;
+    color: #c9a84c;
   }
-  
+
   .cart-count {
     position: absolute;
     top: -8px;
     right: -8px;
-    background-color: #e74c3c;
+    background-color: #c9a84c;
     color: #fff;
     width: 20px;
     height: 20px;
@@ -149,21 +189,103 @@ Header & Navigation Section
     font-weight: bold;
   }
   
+  /* Mobile drawer */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.96);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .mobile-nav.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .mobile-nav__menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .mobile-nav__link {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #555;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .mobile-nav__link:hover,
+  .mobile-nav__link--active {
+    color: #c9a84c;
+  }
+
   @media (max-width: 768px) {
     .header-container {
       padding: 0 1rem;
     }
-    
+
     .header-nav {
       display: none;
     }
-    
-    .nav-menu {
-      gap: 1rem;
+
+    .mobile-nav {
+      display: flex;
     }
-    
+
     .logo-link {
       font-size: 1.2rem;
     }
   }
 {% endstylesheet %}
+
+{% javascript %}
+  var hamburger  = document.getElementById('hamburger-btn');
+  var mobileNav  = document.getElementById('mobile-nav');
+
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', function() {
+      var isOpen = mobileNav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      mobileNav.setAttribute('aria-hidden', !isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    /* close on link click */
+    mobileNav.querySelectorAll('.mobile-nav__link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      });
+    });
+
+    /* close on backdrop tap */
+    mobileNav.addEventListener('click', function(e) {
+      if (e.target === mobileNav) {
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+{% endjavascript %}

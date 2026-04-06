@@ -1,0 +1,272 @@
+{%- comment -%}New Release Banner Section - Sonority Sound{%- endcomment -%}
+
+<section class="ss-nr">
+  <div class="ss-nr__noise"></div>
+  <div class="ss-nr__inner">
+
+    <a href="/collections/sound-effects" class="ss-nr__card">
+
+      <!-- NEW RELEASE label — top left -->
+      <div class="ss-nr__label">
+        <span class="ss-nr__label-pulse"></span>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        NEW RELEASE
+      </div>
+
+      <!-- Drone visual -->
+      <div class="ss-nr__visual">
+        <div class="ss-nr__drone-glow"></div>
+        <svg class="ss-nr__drone-svg" viewBox="0 0 260 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- background grid lines -->
+          <line x1="0" y1="85" x2="260" y2="85" stroke="rgba(201,168,76,0.06)" stroke-width="1"/>
+          <line x1="0" y1="57" x2="260" y2="57" stroke="rgba(201,168,76,0.04)" stroke-width="1"/>
+          <line x1="0" y1="113" x2="260" y2="113" stroke="rgba(201,168,76,0.04)" stroke-width="1"/>
+          <!-- motion trails -->
+          <line x1="2" y1="85" x2="52" y2="85" stroke="rgba(201,168,76,0.3)" stroke-width="2" stroke-dasharray="5 4"/>
+          <line x1="208" y1="85" x2="258" y2="85" stroke="rgba(201,168,76,0.3)" stroke-width="2" stroke-dasharray="5 4"/>
+          <!-- drone body -->
+          <rect x="105" y="74" width="50" height="22" rx="5" fill="rgba(201,168,76,0.12)" stroke="rgba(201,168,76,0.75)" stroke-width="1.8"/>
+          <line x1="105" y1="85" x2="155" y2="85" stroke="rgba(201,168,76,0.3)" stroke-width="0.8"/>
+          <!-- arms -->
+          <line x1="105" y1="78" x2="68" y2="55" stroke="rgba(201,168,76,0.65)" stroke-width="1.8"/>
+          <line x1="155" y1="78" x2="192" y2="55" stroke="rgba(201,168,76,0.65)" stroke-width="1.8"/>
+          <line x1="105" y1="92" x2="68" y2="115" stroke="rgba(201,168,76,0.65)" stroke-width="1.8"/>
+          <line x1="155" y1="92" x2="192" y2="115" stroke="rgba(201,168,76,0.65)" stroke-width="1.8"/>
+          <!-- rotors -->
+          <ellipse cx="68" cy="52" rx="24" ry="6.5" stroke="rgba(201,168,76,0.85)" stroke-width="1.4" fill="rgba(201,168,76,0.07)"/>
+          <ellipse cx="192" cy="52" rx="24" ry="6.5" stroke="rgba(201,168,76,0.85)" stroke-width="1.4" fill="rgba(201,168,76,0.07)"/>
+          <ellipse cx="68" cy="118" rx="24" ry="6.5" stroke="rgba(201,168,76,0.85)" stroke-width="1.4" fill="rgba(201,168,76,0.07)"/>
+          <ellipse cx="192" cy="118" rx="24" ry="6.5" stroke="rgba(201,168,76,0.85)" stroke-width="1.4" fill="rgba(201,168,76,0.07)"/>
+          <!-- rotor hubs -->
+          <circle cx="68" cy="52" r="3.5" fill="rgba(201,168,76,0.55)"/>
+          <circle cx="192" cy="52" r="3.5" fill="rgba(201,168,76,0.55)"/>
+          <circle cx="68" cy="118" r="3.5" fill="rgba(201,168,76,0.55)"/>
+          <circle cx="192" cy="118" r="3.5" fill="rgba(201,168,76,0.55)"/>
+          <!-- camera gimbal -->
+          <circle cx="130" cy="104" r="9" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.55)" stroke-width="1.4"/>
+          <circle cx="130" cy="104" r="4.5" fill="rgba(201,168,76,0.22)"/>
+          <!-- LED -->
+          <circle cx="130" cy="74" r="2.5" fill="#c9a84c" opacity="0.95"/>
+          <!-- body glow -->
+          <ellipse cx="130" cy="85" rx="40" ry="22" fill="rgba(201,168,76,0.05)"/>
+        </svg>
+      </div>
+
+      <!-- Text -->
+      <div class="ss-nr__body">
+        <p class="ss-nr__title">Revolutionary Drone Fly By<br>Sound Effects</p>
+        <p class="ss-nr__desc">Cinematic aerial audio captured from real drone fly-bys &mdash; engineered for film, games, and immersive media. <strong>Now available.</strong></p>
+        <span class="ss-nr__cta">
+          Shop the Drop
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </span>
+      </div>
+
+    </a>
+  </div>
+</section>
+
+{% stylesheet %}
+  /* ── New Release Section ── */
+  .ss-nr {
+    background: #0a0a0a;
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 1px; /* prevents margin collapse with next section */
+  }
+
+  .ss-nr__noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 256px;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .ss-nr__inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 2rem 2.5rem;
+  }
+
+  /* The card — full bleed inside the padded inner */
+  .ss-nr__card {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(135deg, #111 0%, #0f0f0f 50%, #0c0c0c 100%);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    text-decoration: none;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.35s, box-shadow 0.35s;
+    min-height: 240px;
+  }
+
+  .ss-nr__card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(201,168,76,0.07) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .ss-nr__card::after {
+    content: '';
+    position: absolute;
+    right: -60px;
+    bottom: -60px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .ss-nr__card:hover {
+    border-color: rgba(201,168,76,0.6);
+    box-shadow: 0 8px 60px rgba(201,168,76,0.12), 0 2px 30px rgba(0,0,0,0.5);
+  }
+
+  /* NEW RELEASE label */
+  .ss-nr__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: linear-gradient(90deg, #b8922e 0%, #e8c96a 40%, #d4ac50 70%, #b8922e 100%);
+    color: #0a0a0a;
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.4rem 0.5rem 1rem;
+    border-radius: 0 0 14px 0;
+    z-index: 3;
+    box-shadow: 2px 2px 16px rgba(201,168,76,0.4), 0 0 0 1px rgba(201,168,76,0.2);
+  }
+
+  .ss-nr__label-pulse {
+    width: 7px;
+    height: 7px;
+    background: #0a0a0a;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: ss-nr-pulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes ss-nr-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(1.5); }
+  }
+
+  /* Drone side */
+  .ss-nr__visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem 2rem;
+    border-right: 1px solid rgba(201,168,76,0.1);
+    align-self: stretch;
+  }
+
+  .ss-nr__drone-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 55%, rgba(201,168,76,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .ss-nr__drone-svg {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Text side */
+  .ss-nr__body {
+    padding: 3rem 3rem 2.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ss-nr__title {
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  .ss-nr__desc {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.7;
+    max-width: 480px;
+  }
+
+  .ss-nr__desc strong {
+    color: #c9a84c;
+    font-weight: 600;
+  }
+
+  .ss-nr__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #c9a84c;
+    transition: gap 0.2s;
+  }
+
+  .ss-nr__card:hover .ss-nr__cta {
+    gap: 0.65rem;
+  }
+
+  @media (max-width: 900px) {
+    .ss-nr__card {
+      grid-template-columns: 260px 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .ss-nr__inner {
+      padding: 0 0 2rem;
+    }
+    .ss-nr__card {
+      grid-template-columns: 1fr;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+    .ss-nr__visual {
+      border-right: none;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      padding: 3.5rem 2rem 1.5rem;
+    }
+    .ss-nr__drone-svg {
+      max-width: 200px;
+    }
+    .ss-nr__body {
+      padding: 1.75rem 1.5rem 2rem;
+    }
+  }
+{% endstylesheet %}

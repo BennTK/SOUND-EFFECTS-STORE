@@ -1,0 +1,550 @@
+{%- comment -%}Audio Preview Section - 3D Canvas Waveform{%- endcomment -%}
+
+<section class="ss-audio">
+  <div class="ss-audio__container">
+
+    <div class="ss-audio__header">
+      <p class="ss-section-eyebrow">Listen Before You Buy</p>
+      <h2 class="ss-section-title">Sample the Sound</h2>
+      <p class="ss-section-sub">Drag the playhead to scrub. Click a track to load.</p>
+    </div>
+
+    <!-- 3D Waveform Frame -->
+    <div class="ss-wf-frame">
+      <div class="ss-wf-frame__inner">
+        <canvas id="ss-waveform" class="ss-wf-canvas"></canvas>
+        <div class="ss-wf-frame__edge ss-wf-frame__edge--left"></div>
+        <div class="ss-wf-frame__edge ss-wf-frame__edge--right"></div>
+      </div>
+      <div class="ss-wf-meta">
+        <span id="ss-wf-time" class="ss-wf-time">0:00</span>
+        <span id="ss-wf-trackname" class="ss-wf-trackname">Drone Fly Bye &mdash; Pass 01</span>
+        <span id="ss-wf-duration" class="ss-wf-duration">0:42</span>
+      </div>
+    </div>
+
+    <!-- Track List -->
+    <div class="ss-audio__tracks">
+
+      <div class="ss-track active" data-track="0" data-name="Drone Fly Bye — Pass 01" data-pack="Drone Fly Bye Pack" data-duration="0:42" data-seed="3">
+        <button class="ss-track__play" aria-label="Play">
+          <svg class="ss-play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg>
+          <svg class="ss-pause-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+        </button>
+        <div class="ss-track__info">
+          <span class="ss-track__name">Drone Fly Bye &mdash; Pass 01</span>
+          <span class="ss-track__pack">Drone Fly Bye Pack</span>
+        </div>
+        <span class="ss-track__duration">0:42</span>
+      </div>
+
+      <div class="ss-track" data-track="1" data-name="Cinematic Rumble — Low End" data-pack="Momentum Pack" data-duration="1:08" data-seed="7">
+        <button class="ss-track__play" aria-label="Play">
+          <svg class="ss-play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg>
+          <svg class="ss-pause-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+        </button>
+        <div class="ss-track__info">
+          <span class="ss-track__name">Cinematic Rumble &mdash; Low End</span>
+          <span class="ss-track__pack">Momentum Pack</span>
+        </div>
+        <span class="ss-track__duration">1:08</span>
+      </div>
+
+      <div class="ss-track" data-track="2" data-name="Impact Strike — Heavy" data-pack="Cinematic Hits Pack" data-duration="0:22" data-seed="11">
+        <button class="ss-track__play" aria-label="Play">
+          <svg class="ss-play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg>
+          <svg class="ss-pause-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+        </button>
+        <div class="ss-track__info">
+          <span class="ss-track__name">Impact Strike &mdash; Heavy</span>
+          <span class="ss-track__pack">Cinematic Hits Pack</span>
+        </div>
+        <span class="ss-track__duration">0:22</span>
+      </div>
+
+      <div class="ss-track" data-track="3" data-name="Atmospheric Swell — Tension" data-pack="Ambient Worlds Pack" data-duration="2:14" data-seed="5">
+        <button class="ss-track__play" aria-label="Play">
+          <svg class="ss-play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg>
+          <svg class="ss-pause-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+        </button>
+        <div class="ss-track__info">
+          <span class="ss-track__name">Atmospheric Swell &mdash; Tension</span>
+          <span class="ss-track__pack">Ambient Worlds Pack</span>
+        </div>
+        <span class="ss-track__duration">2:14</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .ss-audio {
+    background: #0d0d0d;
+    padding: 6rem 2rem;
+    border-top: 1px solid #161616;
+  }
+
+  .ss-audio__container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .ss-audio__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .ss-section-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin: 0 0 1rem;
+  }
+
+  .ss-section-title {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .ss-section-sub {
+    font-size: 1rem;
+    color: #555;
+    margin: 0;
+  }
+
+  /* Waveform Frame */
+  .ss-wf-frame {
+    margin-bottom: 2.5rem;
+  }
+
+  .ss-wf-frame__inner {
+    position: relative;
+    background: linear-gradient(180deg, #0e0e10 0%, #0a0a0c 100%);
+    border: 1px solid #2a2520;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(201,168,76,0.06),
+      0 20px 60px rgba(0,0,0,0.6),
+      inset 0 1px 0 rgba(255,255,255,0.04),
+      inset 0 -1px 0 rgba(0,0,0,0.4);
+    padding: 2rem 1.5rem;
+    cursor: crosshair;
+  }
+
+  .ss-wf-canvas {
+    display: block;
+    width: 100%;
+    height: 140px;
+    image-rendering: pixelated;
+  }
+
+  /* Vignette edges */
+  .ss-wf-frame__edge {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .ss-wf-frame__edge--left {
+    left: 0;
+    background: linear-gradient(90deg, rgba(10,10,12,0.9) 0%, transparent 100%);
+  }
+
+  .ss-wf-frame__edge--right {
+    right: 0;
+    background: linear-gradient(270deg, rgba(10,10,12,0.9) 0%, transparent 100%);
+  }
+
+  .ss-wf-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0.25rem 0;
+  }
+
+  .ss-wf-time,
+  .ss-wf-duration {
+    font-size: 0.75rem;
+    color: #444;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+  }
+
+  .ss-wf-trackname {
+    font-size: 0.78rem;
+    color: #666;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* Track list */
+  .ss-audio__tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .ss-track {
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1rem 1.25rem;
+    background: #0f0f0f;
+    border: 1px solid #1a1a1a;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .ss-track:hover {
+    background: #131313;
+    border-color: #242424;
+  }
+
+  .ss-track.active {
+    border-color: rgba(201,168,76,0.25);
+    background: #111008;
+  }
+
+  .ss-track.playing .ss-track__play {
+    background: #c9a84c;
+    border-color: #c9a84c;
+    color: #0a0a0a;
+  }
+
+  .ss-track__play {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #282828;
+    background: #181818;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    padding-left: 2px;
+  }
+
+  .ss-track__play:hover {
+    border-color: #c9a84c;
+    color: #c9a84c;
+  }
+
+  .ss-track__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+  }
+
+  .ss-track__name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ccc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ss-track.active .ss-track__name {
+    color: #fff;
+  }
+
+  .ss-track__pack {
+    font-size: 0.7rem;
+    color: #3a3a3a;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .ss-track__duration {
+    font-size: 0.75rem;
+    color: #333;
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (max-width: 768px) {
+    .ss-wf-canvas { height: 90px; }
+    .ss-wf-frame__inner { padding: 1.25rem 1rem; }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+(function () {
+  var canvas = document.getElementById('ss-waveform');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+
+  var GOLD       = '#c9a84c';
+  var GOLD_DIM   = 'rgba(201,168,76,0.55)';
+  var GREY       = 'rgba(80,85,100,0.5)';
+  var GREY_TOP   = 'rgba(100,108,130,0.7)';
+  var BAR_W      = 3;
+  var BAR_GAP    = 2;
+  var playhead   = 0.18;   // 0–1 position
+  var dragging   = false;
+  var currentSeed = 3;
+  var waveData   = [];
+
+  /* --- seeded pseudo-random --- */
+  function seededRand(seed) {
+    var x = Math.sin(seed) * 43758.5453123;
+    return x - Math.floor(x);
+  }
+
+  function buildWave(seed, count) {
+    var data = [];
+    for (var i = 0; i < count; i++) {
+      var r1 = seededRand(seed + i * 0.37);
+      var r2 = seededRand(seed + i * 0.71 + 100);
+      var r3 = seededRand(seed + i * 1.13 + 200);
+      /* combine low + high freq variation */
+      var envelope = 0.3 + 0.7 * Math.abs(Math.sin(i / count * Math.PI));
+      var val = (r1 * 0.45 + r2 * 0.35 + r3 * 0.2) * envelope;
+      val = Math.max(0.04, Math.min(0.98, val));
+      data.push(val);
+    }
+    return data;
+  }
+
+  function resize() {
+    var dpr = window.devicePixelRatio || 1;
+    var rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width  = Math.floor(rect.width * dpr);
+    canvas.height = Math.floor(140 * dpr);
+    ctx.scale(dpr, dpr);
+    var cssW = rect.width;
+    var count = Math.floor(cssW / (BAR_W + BAR_GAP));
+    waveData = buildWave(currentSeed, count);
+    draw();
+  }
+
+  function draw() {
+    var dpr = window.devicePixelRatio || 1;
+    var W   = canvas.width  / dpr;
+    var H   = canvas.height / dpr;
+    var midY = H / 2;
+    var count = waveData.length;
+    var totalW = count * (BAR_W + BAR_GAP) - BAR_GAP;
+    var offsetX = (W - totalW) / 2;
+
+    ctx.clearRect(0, 0, W, H);
+
+    /* subtle centre line */
+    ctx.save();
+    ctx.strokeStyle = 'rgba(201,168,76,0.06)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, midY);
+    ctx.lineTo(W, midY);
+    ctx.stroke();
+    ctx.restore();
+
+    var playX = offsetX + playhead * totalW;
+
+    for (var i = 0; i < count; i++) {
+      var amp  = waveData[i];
+      var x    = offsetX + i * (BAR_W + BAR_GAP);
+      var barH = amp * (midY * 0.88);
+      var played = (x + BAR_W / 2) <= playX;
+
+      /* === TOP BAR === */
+      var topGrad = ctx.createLinearGradient(x, midY - barH, x, midY);
+      if (played) {
+        topGrad.addColorStop(0, 'rgba(240,210,120,0.95)');
+        topGrad.addColorStop(0.5, 'rgba(201,168,76,0.8)');
+        topGrad.addColorStop(1, 'rgba(201,168,76,0.2)');
+      } else {
+        topGrad.addColorStop(0, GREY_TOP);
+        topGrad.addColorStop(0.6, GREY);
+        topGrad.addColorStop(1, 'rgba(60,65,80,0.1)');
+      }
+      ctx.fillStyle = topGrad;
+      ctx.beginPath();
+      ctx.roundRect
+        ? ctx.roundRect(x, midY - barH, BAR_W, barH, [1, 1, 0, 0])
+        : ctx.rect(x, midY - barH, BAR_W, barH);
+      ctx.fill();
+
+      /* glow on played bars */
+      if (played) {
+        ctx.save();
+        ctx.shadowColor = 'rgba(201,168,76,0.6)';
+        ctx.shadowBlur  = 8;
+        ctx.fillStyle   = 'rgba(201,168,76,0.3)';
+        ctx.beginPath();
+        ctx.roundRect
+          ? ctx.roundRect(x, midY - barH, BAR_W, barH, [1, 1, 0, 0])
+          : ctx.rect(x, midY - barH, BAR_W, barH);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      /* === REFLECTION (bottom) === */
+      var refH = barH * 0.55;
+      var botGrad = ctx.createLinearGradient(x, midY, x, midY + refH);
+      if (played) {
+        botGrad.addColorStop(0, 'rgba(201,168,76,0.25)');
+        botGrad.addColorStop(1, 'rgba(201,168,76,0)');
+      } else {
+        botGrad.addColorStop(0, 'rgba(80,85,100,0.18)');
+        botGrad.addColorStop(1, 'rgba(60,65,80,0)');
+      }
+      ctx.fillStyle = botGrad;
+      ctx.beginPath();
+      ctx.roundRect
+        ? ctx.roundRect(x, midY, BAR_W, refH, [0, 0, 1, 1])
+        : ctx.rect(x, midY, BAR_W, refH);
+      ctx.fill();
+    }
+
+    /* === PLAYHEAD LINE === */
+    var phGrad = ctx.createLinearGradient(playX, 0, playX, H);
+    phGrad.addColorStop(0,   'rgba(240,210,100,0)');
+    phGrad.addColorStop(0.3, 'rgba(240,210,100,0.9)');
+    phGrad.addColorStop(0.5, 'rgba(255,220,120,1)');
+    phGrad.addColorStop(0.7, 'rgba(240,210,100,0.9)');
+    phGrad.addColorStop(1,   'rgba(240,210,100,0)');
+
+    ctx.save();
+    ctx.shadowColor = 'rgba(201,168,76,0.8)';
+    ctx.shadowBlur  = 12;
+    ctx.strokeStyle = phGrad;
+    ctx.lineWidth   = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(playX, 4);
+    ctx.lineTo(playX, H - 4);
+    ctx.stroke();
+
+    /* playhead handle diamond */
+    ctx.fillStyle = '#e0bc6a';
+    ctx.shadowBlur = 16;
+    ctx.beginPath();
+    ctx.moveTo(playX,     midY - 6);
+    ctx.lineTo(playX + 5, midY);
+    ctx.lineTo(playX,     midY + 6);
+    ctx.lineTo(playX - 5, midY);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  /* --- interaction --- */
+  function posFromEvent(e) {
+    var rect   = canvas.getBoundingClientRect();
+    var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    var dpr    = window.devicePixelRatio || 1;
+    var W      = canvas.width / dpr;
+    var count  = waveData.length;
+    var totalW = count * (BAR_W + BAR_GAP) - BAR_GAP;
+    var offsetX = (W - totalW) / 2;
+    var x = clientX - rect.left - offsetX;
+    return Math.max(0, Math.min(1, x / totalW));
+  }
+
+  function formatTime(frac, duration) {
+    var secs = Math.round(frac * duration);
+    var m = Math.floor(secs / 60);
+    var s = secs % 60;
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  canvas.parentElement.addEventListener('mousedown', function(e) {
+    dragging = true;
+    playhead = posFromEvent(e);
+    draw();
+    updateTimecode();
+  });
+
+  window.addEventListener('mousemove', function(e) {
+    if (!dragging) return;
+    playhead = posFromEvent(e);
+    draw();
+    updateTimecode();
+  });
+
+  window.addEventListener('mouseup', function() { dragging = false; });
+
+  canvas.parentElement.addEventListener('touchstart', function(e) {
+    dragging = true;
+    playhead = posFromEvent(e);
+    draw();
+    updateTimecode();
+  }, { passive: true });
+
+  window.addEventListener('touchmove', function(e) {
+    if (!dragging) return;
+    playhead = posFromEvent(e);
+    draw();
+    updateTimecode();
+  }, { passive: true });
+
+  window.addEventListener('touchend', function() { dragging = false; });
+
+  function updateTimecode() {
+    var el = document.getElementById('ss-wf-time');
+    var durEl = document.getElementById('ss-wf-duration');
+    if (!el || !durEl) return;
+    var durStr = durEl.textContent;
+    var parts  = durStr.split(':');
+    var totalSecs = parseInt(parts[0]) * 60 + parseInt(parts[1]);
+    el.textContent = formatTime(playhead, totalSecs);
+  }
+
+  /* --- track switching --- */
+  document.querySelectorAll('.ss-track').forEach(function(row) {
+    row.addEventListener('click', function(e) {
+      var btn = e.target.closest('.ss-track__play');
+      var isActive = row.classList.contains('active');
+
+      document.querySelectorAll('.ss-track').forEach(function(r) {
+        r.classList.remove('active', 'playing');
+        r.querySelector('.ss-play-icon').style.display = '';
+        r.querySelector('.ss-pause-icon').style.display = 'none';
+      });
+
+      row.classList.add('active');
+
+      if (btn) {
+        if (!isActive) {
+          row.classList.add('playing');
+          row.querySelector('.ss-play-icon').style.display = 'none';
+          row.querySelector('.ss-pause-icon').style.display = '';
+        }
+      }
+
+      /* update canvas waveform */
+      currentSeed = parseInt(row.dataset.seed) || 3;
+      var count = waveData.length;
+      waveData = buildWave(currentSeed, count);
+      playhead = 0;
+
+      var nameEl = document.getElementById('ss-wf-trackname');
+      var durEl  = document.getElementById('ss-wf-duration');
+      var timeEl = document.getElementById('ss-wf-time');
+      if (nameEl) nameEl.textContent = row.dataset.name || '';
+      if (durEl)  durEl.textContent  = row.dataset.duration || '';
+      if (timeEl) timeEl.textContent = '0:00';
+
+      draw();
+    });
+  });
+
+  /* --- init --- */
+  resize();
+  window.addEventListener('resize', resize);
+})();
+{% endjavascript %}

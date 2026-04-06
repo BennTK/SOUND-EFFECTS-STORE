@@ -1,73 +1,179 @@
-{%- comment -%}
-Hero Section
-{%- endcomment -%}
+{%- comment -%}Hero Section - Sonority Sound{%- endcomment -%}
 
-<section class="hero">
-  <div class="hero-content">
-    <h1 class="hero-title">ll Sound Effects</h1>
-    <p class="hero-description">
-      Premium sound effect bundles for creators, filmmakers, and producers. 
-      Professionally recorded and curated collections to elevate your projects.
-    </p>
-    <a href="/collections/all" class="hero-cta">Browse Sounds</a>
+<section class="ss-hero">
+  <div class="ss-hero__noise"></div>
+  <div class="ss-hero__glow"></div>
+  <div class="ss-hero__content">
+    <p class="ss-hero__eyebrow">Sonority Sound &mdash; Premium Audio</p>
+    <h1 class="ss-hero__title">Premium Sound Effects<br>for Modern Creators</h1>
+    <p class="ss-hero__sub">Professionally recorded. Cinematic quality. Ready for film, games, podcasts, and beyond.</p>
+    <div class="ss-hero__actions">
+      <a href="/collections/all" class="ss-btn ss-btn--gold">Browse Collections</a>
+      <a href="/collections/bundles" class="ss-btn ss-btn--ghost">View Bundles</a>
+    </div>
+    <div class="ss-hero__stats">
+      <div class="ss-hero__stat"><span class="ss-hero__stat-num">60K+</span><span class="ss-hero__stat-label">Creators</span></div>
+      <div class="ss-hero__stat-divider"></div>
+      <div class="ss-hero__stat"><span class="ss-hero__stat-num">500+</span><span class="ss-hero__stat-label">Sound Packs</span></div>
+      <div class="ss-hero__stat-divider"></div>
+      <div class="ss-hero__stat"><span class="ss-hero__stat-num">4.9★</span><span class="ss-hero__stat-label">Avg Rating</span></div>
+    </div>
+
   </div>
 </section>
 
 {% stylesheet %}
-  .hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    color: #fff;
-    padding: 6rem 2rem;
+  .ss-hero {
+    position: relative;
+    min-height: 100vh;
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    margin-bottom: 3rem;
+    overflow: hidden;
+    padding: 6rem 2rem;
   }
-  
-  .hero-content {
-    max-width: 800px;
+
+  .ss-hero__noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 256px;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  .ss-hero__glow {
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .ss-hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
     margin: 0 auto;
   }
-  
-  .hero-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin: 0 0 1rem 0;
-    line-height: 1.1;
+
+  .ss-hero__eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin: 0 0 1.5rem;
+    font-weight: 500;
   }
-  
-  .hero-description {
+
+  .ss-hero__title {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    color: #ffffff;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .ss-hero__sub {
     font-size: 1.1rem;
-    color: #ccc;
-    margin-bottom: 2rem;
-    line-height: 1.6;
+    color: #777;
+    line-height: 1.7;
+    margin: 0 auto 2.5rem;
+    max-width: 560px;
   }
-  
-  .hero-cta {
+
+  .ss-hero__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+
+  .ss-btn {
     display: inline-block;
-    background-color: #e74c3c;
-    color: #fff;
-    padding: 0.75rem 2rem;
-    text-decoration: none;
-    border-radius: 4px;
+    padding: 0.875rem 2.25rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: all 0.25s ease;
   }
-  
-  .hero-cta:hover {
-    background-color: #c0392b;
+
+  .ss-btn--gold {
+    background: #c9a84c;
+    color: #0a0a0a;
+  }
+
+  .ss-btn--gold:hover {
+    background: #e0bc6a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(201,168,76,0.3);
+  }
+
+  .ss-btn--ghost {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid #333;
+  }
+
+  .ss-btn--ghost:hover {
+    border-color: #c9a84c;
+    color: #c9a84c;
     transform: translateY(-2px);
   }
-  
+
+  .ss-hero__stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .ss-hero__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .ss-hero__stat-num {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+  }
+
+  .ss-hero__stat-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #555;
+  }
+
+  .ss-hero__stat-divider {
+    width: 1px;
+    height: 36px;
+    background: #222;
+  }
+
   @media (max-width: 768px) {
-    .hero {
-      padding: 3rem 1.5rem;
+    .ss-hero {
+      min-height: 90vh;
+      padding: 5rem 1.5rem 3rem;
     }
-    
-    .hero-title {
-      font-size: 2rem;
+    .ss-hero__stats {
+      gap: 1.25rem;
     }
-    
-    .hero-description {
-      font-size: 1rem;
+    .ss-hero__stat-num {
+      font-size: 1.2rem;
     }
   }
 {% endstylesheet %}

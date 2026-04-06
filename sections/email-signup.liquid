@@ -1,0 +1,139 @@
+{%- comment -%}Email Signup - 10% Off First Pack{%- endcomment -%}
+
+<section class="ss-email">
+  <div class="ss-email__container">
+    <div class="ss-email__inner">
+      <div class="ss-email__copy">
+        <p class="ss-section-eyebrow">Exclusive Offer</p>
+        <h2 class="ss-email__title">Get 10% Off<br>Your First Pack</h2>
+        <p class="ss-email__sub">Join 1,243+ creators. Get early access to new packs, exclusive discounts, and free monthly sounds.</p>
+      </div>
+      <div class="ss-email__form-wrap">
+        {% form 'customer' %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="ss-email__form">
+            <input
+              type="email"
+              name="contact[email]"
+              placeholder="your@email.com"
+              class="ss-email__input"
+              required
+              autocomplete="email"
+            >
+            <button type="submit" class="ss-btn ss-btn--gold">
+              Claim 10% Off
+            </button>
+          </div>
+          <p class="ss-email__disclaimer">No spam. Unsubscribe any time. Discount sent instantly.</p>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .ss-email {
+    background: #0d0d0d;
+    padding: 6rem 2rem;
+    border-top: 1px solid #161616;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ss-email::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .ss-email__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ss-email__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    padding: 4rem;
+    background: #111;
+    border: 1px solid #1e1e1e;
+    border-radius: 8px;
+  }
+
+  .ss-email__title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: #fff;
+    margin: 0.75rem 0 1rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .ss-email__sub {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .ss-email__form-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .ss-email__form {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .ss-email__input {
+    flex: 1;
+    background: #0a0a0a;
+    border: 1px solid #2a2a2a;
+    border-radius: 3px;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9rem;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+    min-width: 0;
+  }
+
+  .ss-email__input::placeholder {
+    color: #333;
+  }
+
+  .ss-email__input:focus {
+    border-color: rgba(201,168,76,0.4);
+  }
+
+  .ss-email__disclaimer {
+    font-size: 0.72rem;
+    color: #333;
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .ss-email__inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem;
+    }
+    .ss-email__form {
+      flex-direction: column;
+    }
+    .ss-email__form .ss-btn {
+      text-align: center;
+    }
+  }
+{% endstylesheet %}
