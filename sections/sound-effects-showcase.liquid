@@ -1,0 +1,174 @@
+{%- comment -%}Sound Effects Showcase Section - Sonority Sound{%- endcomment -%}
+
+<section class="ss-sfx">
+  <div class="ss-sfx__inner">
+
+    <a href="/collections/sound-effects" class="ss-sfx__layout">
+
+      <!-- Text side -->
+      <div class="ss-sfx__body">
+        <p class="ss-sfx__eyebrow">500+ Professional Recordings</p>
+        <h2 class="ss-sfx__title">Sound Effects<br>Built for Modern<br>Creators</h2>
+        <p class="ss-sfx__desc">Drones, impacts, foley, ambience, and more — every sound professionally recorded and ready for film, games, podcasts, and beyond.</p>
+        <ul class="ss-sfx__features">
+          <li>Instant download, royalty-free</li>
+          <li>Individual &amp; commercial licenses</li>
+          <li>Organised &amp; metadata tagged</li>
+        </ul>
+        <div class="ss-sfx__actions">
+          <span class="ss-sfx__cta-btn">
+            Browse Sound Effects
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </span>
+        </div>
+      </div>
+
+      <!-- Photo slot -->
+      <div class="ss-sfx__photo">
+        <div class="ss-sfx__photo-placeholder">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Add collection photo</span>
+        </div>
+      </div>
+
+    </a>
+  </div>
+</section>
+
+{% stylesheet %}
+  .ss-sfx {
+    background: #0a0a0a;
+    padding: 5rem 0;
+    border-top: 1px solid #161616;
+  }
+
+  .ss-sfx__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .ss-sfx__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  /* Text */
+  .ss-sfx__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .ss-sfx__eyebrow {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin: 0;
+  }
+
+  .ss-sfx__title {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 900;
+    color: #fff;
+    margin: 0;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  }
+
+  .ss-sfx__desc {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  .ss-sfx__features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ss-sfx__features li {
+    font-size: 0.82rem;
+    color: #666;
+    padding-left: 1.1rem;
+    position: relative;
+  }
+
+  .ss-sfx__features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #c9a84c;
+    font-weight: 700;
+  }
+
+  .ss-sfx__actions {
+    margin-top: 0.5rem;
+  }
+
+  .ss-sfx__cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #c9a84c;
+    color: #0a0a0a;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .ss-sfx__layout:hover .ss-sfx__cta-btn {
+    background: #e0bc6a;
+    transform: translateX(3px);
+  }
+
+  /* Photo slot */
+  .ss-sfx__photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #111;
+    border: 2px dashed #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .ss-sfx__photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: #333;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 800px) {
+    .ss-sfx__layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .ss-sfx__inner {
+      padding: 0 1.5rem;
+    }
+    .ss-sfx__photo {
+      order: -1;
+    }
+  }
+{% endstylesheet %}
