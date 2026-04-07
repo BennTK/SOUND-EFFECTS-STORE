@@ -1,0 +1,109 @@
+{%- comment -%}Trust Badges — Sonority Sound{%- endcomment -%}
+
+<section class="ss-badges">
+  <div class="ss-badges__container">
+
+    <div class="ss-badges__inner">
+
+      <div class="ss-badges__item ss-badges__item--license">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span class="ss-badges__title">Individual License</span>
+        <span class="ss-badges__sub">Personal &amp; solo creator use</span>
+      </div>
+
+      <div class="ss-badges__divider"></div>
+
+      <div class="ss-badges__item ss-badges__item--license">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span class="ss-badges__title">Commercial License</span>
+        <span class="ss-badges__sub">Teams, agencies &amp; brands</span>
+      </div>
+
+      <div class="ss-badges__divider"></div>
+
+      <div class="ss-badges__item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        <span>Instant Download</span>
+      </div>
+
+      <div class="ss-badges__item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>30-Day Guarantee</span>
+      </div>
+
+      <div class="ss-badges__item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>24/7 Support</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .ss-badges {
+    background: #0a0a0a;
+    border-top: 1px solid #161616;
+    padding: 4rem 2rem 5rem;
+  }
+
+  .ss-badges__container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .ss-badges__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .ss-badges__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  .ss-badges__item--license {
+    background: #111;
+    border: 1px solid #1e1e1e;
+    border-radius: 5px;
+    padding: 1.25rem 1.75rem;
+    gap: 0.5rem;
+  }
+
+  .ss-badges__title {
+    font-size: 0.75rem;
+    color: #ccc;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .ss-badges__sub {
+    font-size: 0.65rem;
+    color: #444;
+    text-transform: none;
+    letter-spacing: 0.03em;
+    font-weight: 400;
+  }
+
+  .ss-badges__divider {
+    width: 1px;
+    height: 48px;
+    background: #1e1e1e;
+    align-self: center;
+  }
+
+  @media (max-width: 768px) {
+    .ss-badges__inner { gap: 2rem; }
+    .ss-badges__divider { display: none; }
+  }
+{% endstylesheet %}
