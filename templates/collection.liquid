@@ -42,11 +42,18 @@
         {%- assign pack_class = parts[2] -%}
         <a href="/products/{{ pack_slug }}" class="sc-card">
           <div class="sc-card__img-wrap">
-            <div class="sc-card__img-placeholder sc-card__img-placeholder--{{ pack_class }}">
-              <div class="sc-card__thumb-title">{{ pack_name }}</div>
-            </div>
+            <div class="sc-card__img-placeholder sc-card__img-placeholder--{{ pack_class }}"></div>
             <div class="sc-card__overlay">
               <span class="sc-card__quick-btn">View Pack →</span>
+            </div>
+          </div>
+          <div class="sc-card__info">
+            <div>
+              <p class="sc-card__name">{{ pack_name }}</p>
+              <p class="sc-card__category">Drone Fly Bys Collection</p>
+            </div>
+            <div class="sc-card__pricing">
+              <span class="sc-card__price">From $19</span>
             </div>
           </div>
         </a>
