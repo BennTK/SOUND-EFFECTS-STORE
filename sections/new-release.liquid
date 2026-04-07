@@ -11,7 +11,7 @@
       NEW RELEASE
     </div>
 
-    <a href="/collections/sound-effects" class="ss-nr__layout">
+    <div class="ss-nr__layout">
 
       <!-- Photo slot -->
       <div class="ss-nr__photo">
@@ -28,15 +28,15 @@
         <p class="ss-nr__desc">Cinematic aerial audio captured from real drone fly-bys — engineered for film, games, and immersive media.</p>
         <p class="ss-nr__available">Now Available</p>
         <div class="ss-nr__actions">
-          <span class="ss-nr__cta-btn">
-            Shop the Drop
+          <a href="/collections/sound-effects" class="ss-nr__cta-btn">
+            Buy Now
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </span>
-          <span class="ss-nr__preview">Preview samples &rarr;</span>
+          </a>
+          <a href="/collections/sound-effects" class="ss-nr__preview">Browse Collections &rarr;</a>
         </div>
       </div>
 
-    </a>
+    </div>
   </div>
 </section>
 
@@ -179,10 +179,11 @@
     text-transform: uppercase;
     padding: 0.9rem 2rem;
     border-radius: 4px;
-    transition: background 0.2s, transform 0.2s;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s, color 0.2s;
   }
 
-  .ss-nr__layout:hover .ss-nr__cta-btn {
+  .ss-nr__cta-btn:hover {
     background: #c9a84c;
     color: #0a0a0a;
     transform: translateX(3px);
@@ -193,10 +194,11 @@
     font-weight: 600;
     letter-spacing: 0.04em;
     color: #aaa;
+    text-decoration: none;
     transition: color 0.2s;
   }
 
-  .ss-nr__layout:hover .ss-nr__preview {
+  .ss-nr__preview:hover {
     color: #666;
   }
 
