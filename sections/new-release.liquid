@@ -24,9 +24,23 @@
       <!-- Text -->
       <div class="ss-nr__body">
         <p class="ss-nr__eyebrow">Drone Fly By Collection</p>
-        <h2 class="ss-nr__title">Revolutionary Drone Fly By Sound Effects</h2>
+        <h2 class="ss-nr__title">Complete Collection</h2>
         <p class="ss-nr__desc">Cinematic aerial audio captured from real drone fly-bys — engineered for film, games, and immersive media.</p>
         <p class="ss-nr__available">Now Available</p>
+
+        <!-- Single preview track -->
+        <div class="ss-nr__track">
+          <button class="ss-nr__track-play" aria-label="Play">
+            <svg class="ss-pi" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg class="ss-pau" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          </button>
+          <div class="ss-nr__track-info">
+            <span class="ss-nr__track-name">All Drone Fly Bys Collections</span>
+            <span class="ss-nr__track-pack">Complete Collection — Preview</span>
+          </div>
+          <span class="ss-nr__track-dur">0:42</span>
+        </div>
+
         <div class="ss-nr__actions">
           <a href="/collections/sound-effects" class="ss-nr__cta-btn">
             Buy Now
@@ -202,6 +216,86 @@
     color: #666;
   }
 
+  /* ── Preview track ── */
+  .ss-nr__track {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.75rem 1rem;
+    background: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .ss-nr__track:hover {
+    background: #f2f2f2;
+    border-color: rgba(201,168,76,0.4);
+  }
+
+  .ss-nr__track.is-playing {
+    border-color: rgba(201,168,76,0.5);
+    background: #fdf9f0;
+  }
+
+  .ss-nr__track-play {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding-left: 1px;
+    transition: all 0.2s;
+  }
+
+  .ss-nr__track.is-playing .ss-nr__track-play {
+    background: #c9a84c;
+    border-color: #c9a84c;
+    color: #fff;
+  }
+
+  .ss-nr__track-play:hover {
+    border-color: #c9a84c;
+    color: #c9a84c;
+  }
+
+  .ss-nr__track-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .ss-nr__track-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #0a0a0a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ss-nr__track-pack {
+    font-size: 0.65rem;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .ss-nr__track-dur {
+    font-size: 0.7rem;
+    color: #bbb;
+    font-variant-numeric: tabular-nums;
+  }
+
   @media (max-width: 800px) {
     .ss-nr__layout {
       grid-template-columns: 1fr;
@@ -212,3 +306,16 @@
     }
   }
 {% endstylesheet %}
+
+{% javascript %}
+(function () {
+  var track = document.querySelector('.ss-nr__track');
+  if (!track) return;
+  track.addEventListener('click', function () {
+    var isPlaying = track.classList.contains('is-playing');
+    track.classList.toggle('is-playing', !isPlaying);
+    track.querySelector('.ss-pi').style.display = isPlaying ? '' : 'none';
+    track.querySelector('.ss-pau').style.display = isPlaying ? 'none' : '';
+  });
+})();
+{% endjavascript %}
