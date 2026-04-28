@@ -1,0 +1,195 @@
+{% if page.handle == 'support' %}
+  {% render 'page-support' %}
+{% elsif page.handle == 'licensing' %}
+  {% render 'page-licensing' %}
+{% else %}
+<!-- Sonority Sound — Coming Soon Page -->
+<div class="cs-page">
+  <div class="cs-noise"></div>
+  <div class="cs-glow"></div>
+
+  <div class="cs-content">
+    <p class="cs-eyebrow">Sonority Sound</p>
+
+    <div class="cs-icon">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    </div>
+
+    <h1 class="cs-title">{{ page.title | default: 'Coming Soon' }}</h1>
+    <p class="cs-sub">We're working on something special. This page will be live soon — check back shortly.</p>
+
+    <div class="cs-divider"></div>
+
+    <a href="/" class="cs-btn">← Back to Home</a>
+
+    <div class="cs-notify">
+      <p class="cs-notify__label">Get notified when we launch</p>
+      {% form 'customer' %}
+        <input type="hidden" name="contact[tags]" value="notify">
+        <div class="cs-notify__form">
+          <input type="email" name="contact[email]" placeholder="your@email.com" class="cs-notify__input" required>
+          <button type="submit" class="cs-notify__btn">Notify Me</button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .cs-page {
+    background: #0a0a0a;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cs-noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 256px;
+    pointer-events: none;
+  }
+
+  .cs-glow {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cs-content {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .cs-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin-bottom: 2rem;
+  }
+
+  .cs-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(201,168,76,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+  }
+
+  .cs-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .cs-sub {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .cs-divider {
+    width: 40px;
+    height: 1px;
+    background: #222;
+    margin: 0 auto 2.5rem;
+  }
+
+  .cs-btn {
+    display: inline-block;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #555;
+    border: 1px solid #222;
+    padding: 0.75rem 1.75rem;
+    border-radius: 3px;
+    transition: border-color 0.2s, color 0.2s;
+    margin-bottom: 3rem;
+  }
+
+  .cs-btn:hover {
+    border-color: #c9a84c;
+    color: #c9a84c;
+  }
+
+  .cs-notify {
+    border-top: 1px solid #161616;
+    padding-top: 2.5rem;
+  }
+
+  .cs-notify__label {
+    font-size: 0.75rem;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  .cs-notify__form {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .cs-notify__input {
+    flex: 1;
+    background: #111;
+    border: 1px solid #222;
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 3px;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .cs-notify__input::placeholder { color: #333; }
+  .cs-notify__input:focus { border-color: rgba(201,168,76,0.4); }
+
+  .cs-notify__btn {
+    background: #c9a84c;
+    color: #0a0a0a;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+
+  .cs-notify__btn:hover { background: #e0bc6a; }
+
+  @media (max-width: 480px) {
+    .cs-notify__form { flex-direction: column; }
+  }
+</style>
+{% endif %}
