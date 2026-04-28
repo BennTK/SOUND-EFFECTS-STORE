@@ -16,6 +16,7 @@
 
   <!-- ── FAQ Grid ── -->
   <div class="sp-faq">
+  <div class="sp-faq__inner">
 
     <!-- Q1 -->
     <div class="sp-item" data-open="false">
@@ -174,6 +175,7 @@
     </div>
 
   </div>
+  </div>
 
   <!-- ── Divider ── -->
   <div class="sp-divider">
@@ -293,14 +295,18 @@
 
   /* ── FAQ ── */
   .sp-faq {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 2rem 5rem;
+    max-width: 1100px;
+    margin: 0 auto 5rem;
+    padding: 0 2rem;
     position: relative;
     z-index: 1;
+  }
+
+  .sp-faq__inner {
     border: 1px solid #141414;
     border-radius: 10px;
     overflow: hidden;
+    background: #0d0d0d;
   }
 
   .sp-item {
@@ -314,7 +320,7 @@
     display: flex;
     align-items: center;
     gap: 1.25rem;
-    padding: 1.6rem 2rem;
+    padding: 1.75rem 2.25rem;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -322,27 +328,27 @@
     transition: background 0.2s;
   }
 
-  .sp-item__q:hover { background: #0d0d0d; }
+  .sp-item__q:hover { background: #111; }
 
-  .sp-item[data-open="true"] .sp-item__q { background: #0d0d0d; }
+  .sp-item[data-open="true"] .sp-item__q { background: #111; }
 
   .sp-item__num {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     font-weight: 900;
-    color: #1c1c1c;
-    letter-spacing: -0.03em;
+    color: #1e1e1e;
+    letter-spacing: -0.04em;
     flex-shrink: 0;
     font-variant-numeric: tabular-nums;
-    width: 28px;
+    width: 36px;
   }
 
   .sp-item[data-open="true"] .sp-item__num { color: #c9a84c; }
 
   .sp-item__text {
     flex: 1;
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #888;
+    color: #666;
     line-height: 1.45;
     transition: color 0.2s;
   }
@@ -371,18 +377,18 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease, padding 0.3s ease;
-    padding: 0 2rem 0 calc(2rem + 28px + 1.25rem);
+    padding: 0 2.25rem 0 calc(2.25rem + 36px + 1.25rem);
   }
 
   .sp-item[data-open="true"] .sp-item__a {
     max-height: 600px;
-    padding: 0 2rem 1.75rem calc(2rem + 28px + 1.25rem);
+    padding: 0.25rem 2.25rem 2rem calc(2.25rem + 36px + 1.25rem);
   }
 
   .sp-item__a p {
-    font-size: 0.88rem;
-    color: #4a4a4a;
-    line-height: 1.85;
+    font-size: 0.875rem;
+    color: #3e3e3e;
+    line-height: 1.9;
     margin: 0 0 1rem;
   }
 
@@ -573,17 +579,15 @@
   }
 
   /* ── Mobile ── */
-  .sp-faq { margin: 0 2rem 5rem; max-width: calc(860px); }
-
   @media (max-width: 900px) {
-    .sp-faq { margin: 0 1.25rem 4rem; }
+    .sp-faq { padding: 0 1.25rem; }
   }
 
   @media (max-width: 600px) {
     .sp-hero { padding: 3.5rem 1.25rem 3rem; }
-    .sp-item__q { padding: 1.25rem; gap: 0.85rem; }
-    .sp-item__a { padding: 0 1.25rem 0 calc(1.25rem + 28px + 0.85rem); }
-    .sp-item[data-open="true"] .sp-item__a { padding: 0 1.25rem 1.5rem calc(1.25rem + 28px + 0.85rem); }
+    .sp-item__q { padding: 1.25rem 1.25rem; gap: 0.85rem; }
+    .sp-item__a { padding: 0 1.25rem 0 calc(1.25rem + 36px + 0.85rem); }
+    .sp-item[data-open="true"] .sp-item__a { padding: 0.25rem 1.25rem 1.5rem calc(1.25rem + 36px + 0.85rem); }
     .sp-contact { padding: 4rem 1.25rem 5rem; }
     .sp-contact__card { flex-direction: column; text-align: center; }
   }
