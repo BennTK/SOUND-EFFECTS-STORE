@@ -25,7 +25,7 @@ Header & Navigation Section
           <a href="/collections/sound-effects" class="nav-link{% if request.page_type == 'collection' and collection.handle == 'sound-effects' %} nav-link--active{% endif %}">Sound Effects</a>
         </li>
         <li>
-          <a href="/collections/soundtracks" class="nav-link{% if request.page_type == 'collection' and collection.handle == 'soundtracks' %} nav-link--active{% endif %}">Soundtracks</a>
+          <a href="/pages/soundtracks" class="nav-link{% if request.page_type == 'page' and page.handle == 'soundtracks' %} nav-link--active{% endif %}">Soundtracks</a>
         </li>
         <li>
           <a href="/pages/bundles" class="nav-link{% if request.page_type == 'page' and page.handle == 'bundles' %} nav-link--active{% endif %}">Bundles</a>
@@ -47,7 +47,7 @@ Header & Navigation Section
       <ul class="mobile-nav__menu">
         <li><a href="/" class="mobile-nav__link{% if request.page_type == 'index' %} mobile-nav__link--active{% endif %}">Home</a></li>
         <li><a href="/collections/sound-effects" class="mobile-nav__link{% if request.page_type == 'collection' and collection.handle == 'sound-effects' %} mobile-nav__link--active{% endif %}">Sound Effects</a></li>
-        <li><a href="/collections/soundtracks" class="mobile-nav__link{% if request.page_type == 'collection' and collection.handle == 'soundtracks' %} mobile-nav__link--active{% endif %}">Soundtracks</a></li>
+        <li><a href="/pages/soundtracks" class="mobile-nav__link{% if request.page_type == 'page' and page.handle == 'soundtracks' %} mobile-nav__link--active{% endif %}">Soundtracks</a></li>
         <li><a href="/pages/bundles" class="mobile-nav__link{% if request.page_type == 'page' and page.handle == 'bundles' %} mobile-nav__link--active{% endif %}">Bundles</a></li>
         <li><a href="/pages/licensing" class="mobile-nav__link{% if request.page_type == 'page' and page.handle == 'licensing' %} mobile-nav__link--active{% endif %}">Licensing</a></li>
         <li><a href="/pages/affiliate" class="mobile-nav__link{% if request.page_type == 'page' and page.handle == 'affiliate' %} mobile-nav__link--active{% endif %}">Affiliate</a></li>
