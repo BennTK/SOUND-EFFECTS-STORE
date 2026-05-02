@@ -1,0 +1,351 @@
+{%- comment -%}10% Discount Popup — appears after 20 seconds, tracks dismissal in localStorage{%- endcomment -%}
+
+<div id="ss-popup-overlay" class="ss-popup-overlay" aria-modal="true" role="dialog" aria-label="Get 10% off your first order" hidden>
+  <div class="ss-popup">
+    <button class="ss-popup__close" id="ss-popup-close" aria-label="Close">&times;</button>
+
+    <div class="ss-popup__badge">EXCLUSIVE OFFER</div>
+
+    <div class="ss-popup__headline">
+      <span class="ss-popup__pct">10% OFF</span>
+      <span class="ss-popup__sub-head">Your First Sound Pack</span>
+    </div>
+
+    <p class="ss-popup__body">Join 1,243+ creators. Drop your email and we'll send your discount code instantly — plus early access to new releases.</p>
+
+    <div id="ss-popup-form-wrap">
+      {% form 'customer' %}
+        <input type="hidden" name="contact[tags]" value="newsletter,popup-discount">
+        <div class="ss-popup__form">
+          <input
+            type="email"
+            name="contact[email]"
+            placeholder="your@email.com"
+            class="ss-popup__input"
+            required
+            autocomplete="email"
+          >
+          <button type="submit" class="ss-popup__btn">Claim My 10% Off</button>
+        </div>
+        <p class="ss-popup__fine">No spam. Unsubscribe any time.</p>
+      {% endform %}
+    </div>
+
+    <div id="ss-popup-success" class="ss-popup__success" hidden>
+      <div class="ss-popup__success-icon">&#10003;</div>
+      <p class="ss-popup__success-title">You're in!</p>
+      <p class="ss-popup__success-body">Check your inbox — your 10% off code is on its way.</p>
+    </div>
+
+    <button class="ss-popup__skip" id="ss-popup-skip">No thanks, I'll pay full price</button>
+  </div>
+</div>
+
+<style>
+  .ss-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    backdrop-filter: blur(4px);
+  }
+
+  .ss-popup-overlay.ss-popup-overlay--visible {
+    opacity: 1;
+  }
+
+  .ss-popup-overlay[hidden] {
+    display: none !important;
+  }
+
+  .ss-popup {
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-top: 2px solid #c9a84c;
+    border-radius: 8px;
+    padding: 2.75rem 2.5rem 2rem;
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    transform: translateY(20px);
+    transition: transform 0.35s ease;
+  }
+
+  .ss-popup-overlay--visible .ss-popup {
+    transform: translateY(0);
+  }
+
+  .ss-popup__close {
+    position: absolute;
+    top: 1rem;
+    right: 1.1rem;
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.2rem 0.4rem;
+    transition: color 0.2s;
+  }
+
+  .ss-popup__close:hover {
+    color: #fff;
+  }
+
+  .ss-popup__badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #c9a84c;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px;
+    padding: 0.3rem 0.75rem;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+  }
+
+  .ss-popup__headline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .ss-popup__pct {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    font-weight: 900;
+    color: #c9a84c;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .ss-popup__sub-head {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .ss-popup__body {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.65;
+    margin-bottom: 1.75rem;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ss-popup__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .ss-popup__input {
+    width: 100%;
+    background: #0a0a0a;
+    border: 1px solid #2a2a2a;
+    border-radius: 3px;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.9rem;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+  }
+
+  .ss-popup__input::placeholder {
+    color: #333;
+  }
+
+  .ss-popup__input:focus {
+    border-color: rgba(201,168,76,0.5);
+  }
+
+  .ss-popup__btn {
+    width: 100%;
+    background: #c9a84c;
+    color: #0a0a0a;
+    border: none;
+    border-radius: 3px;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-transform: uppercase;
+  }
+
+  .ss-popup__btn:hover {
+    background: #e0bc6a;
+    transform: translateY(-1px);
+  }
+
+  .ss-popup__fine {
+    font-size: 0.7rem;
+    color: #333;
+    margin-top: 0.5rem;
+  }
+
+  .ss-popup__skip {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 0.72rem;
+    cursor: pointer;
+    margin-top: 1.25rem;
+    font-family: inherit;
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+
+  .ss-popup__skip:hover {
+    color: #666;
+  }
+
+  .ss-popup__success {
+    padding: 1rem 0;
+  }
+
+  .ss-popup__success[hidden] {
+    display: none !important;
+  }
+
+  .ss-popup__success-icon {
+    width: 52px;
+    height: 52px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: #c9a84c;
+    margin: 0 auto 1rem;
+  }
+
+  .ss-popup__success-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.4rem;
+  }
+
+  .ss-popup__success-body {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 520px) {
+    .ss-popup {
+      padding: 2.25rem 1.5rem 1.75rem;
+    }
+  }
+</style>
+
+<script>
+(function () {
+  var STORAGE_KEY = 'sonority_popup_v1';
+  var DELAY_MS    = 20000; // 20 seconds
+
+  function isDismissed() {
+    try {
+      var val = localStorage.getItem(STORAGE_KEY);
+      if (!val) return false;
+      var data = JSON.parse(val);
+      // Expire after 30 days so lapsed visitors see it again
+      return data.dismissed && (Date.now() - data.ts < 30 * 24 * 60 * 60 * 1000);
+    } catch (e) { return false; }
+  }
+
+  function markDismissed() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ dismissed: true, ts: Date.now() }));
+    } catch (e) {}
+  }
+
+  function closePopup(overlay) {
+    overlay.classList.remove('ss-popup-overlay--visible');
+    setTimeout(function () { overlay.hidden = true; }, 350);
+    markDismissed();
+  }
+
+  function showPopup(overlay) {
+    overlay.hidden = false;
+    // Force reflow so the transition fires
+    overlay.getBoundingClientRect();
+    overlay.classList.add('ss-popup-overlay--visible');
+  }
+
+  function init() {
+    if (isDismissed()) return;
+
+    var overlay = document.getElementById('ss-popup-overlay');
+    if (!overlay) return;
+
+    setTimeout(function () {
+      showPopup(overlay);
+    }, DELAY_MS);
+
+    // Close on X button
+    document.getElementById('ss-popup-close').addEventListener('click', function () {
+      closePopup(overlay);
+    });
+
+    // Close on "no thanks" link
+    document.getElementById('ss-popup-skip').addEventListener('click', function () {
+      closePopup(overlay);
+    });
+
+    // Close on overlay background click
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closePopup(overlay);
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !overlay.hidden) closePopup(overlay);
+    });
+
+    // Handle form submit — show success state and mark dismissed
+    var form = overlay.querySelector('form');
+    if (form) {
+      form.addEventListener('submit', function () {
+        markDismissed();
+        // Show success after a short delay (Shopify form posts and reloads, but we
+        // optimistically show success before the navigation happens)
+        setTimeout(function () {
+          var formWrap = document.getElementById('ss-popup-form-wrap');
+          var success  = document.getElementById('ss-popup-success');
+          if (formWrap) formWrap.hidden = true;
+          if (success)  success.hidden  = false;
+          var skip = document.getElementById('ss-popup-skip');
+          if (skip) skip.textContent = 'Close';
+        }, 300);
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
