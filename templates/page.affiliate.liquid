@@ -320,78 +320,182 @@
 <section class="af-payout" id="payout">
   <div class="af-container">
     <p class="af-eyebrow">Already an Affiliate?</p>
-    <h2 class="af-section-title">Request a Payout</h2>
-    <p class="af-section-sub">Once your balance reaches $50 you can request a payment. We process all payouts within 7 business days.</p>
+    <h2 class="af-section-title">Payout Settings &amp; Request</h2>
+    <p class="af-section-sub">Choose how often you want to get paid, then submit your request. We process all payouts within 3–7 business days.</p>
 
-    <div class="af-payout__grid">
+    {% if customer %}
 
-      <div class="af-payout__card">
-        <div class="af-payout__card-head">
-          <div class="af-payout__card-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-          </div>
-          <h3 class="af-payout__card-title">Request Invoice &amp; Payout</h3>
+    <!-- LOGGED IN STATE -->
+    <div class="af-payout-logged">
+
+      <!-- Greeting bar -->
+      <div class="af-payout__greeting">
+        <div class="af-payout__greeting-avatar">{{ customer.first_name | slice: 0 | upcase }}</div>
+        <div>
+          <p class="af-payout__greeting-name">{{ customer.first_name }} {{ customer.last_name }}</p>
+          <p class="af-payout__greeting-email">{{ customer.email }}</p>
         </div>
-        {% form 'contact' %}
-          {% if form.posted_successfully? %}
-            <div class="af-success af-success--small">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              <p>Payout request received! We'll process within 7 business days and send your invoice confirmation.</p>
+        <a href="/account" class="af-payout__greeting-link">My Account →</a>
+      </div>
+
+      <!-- Step 1: Frequency picker -->
+      <div class="af-freq-section">
+        <p class="af-freq__label"><span class="af-freq__step">1</span> Choose your payout frequency</p>
+        <div class="af-freq__grid">
+
+          <button type="button" class="af-freq__card af-freq__card--active" id="freq-weekly" onclick="selectFreq('weekly')">
+            <div class="af-freq__card-check" id="check-weekly">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
-          {% else %}
-          <input type="hidden" name="contact[subject]" value="Affiliate Payout Request">
-          <div class="af-form__field" style="margin-bottom:1rem">
-            <label class="af-form__label">Your Affiliate Email</label>
-            <input type="email" name="contact[email]" class="af-form__input" placeholder="Email used on your affiliate account" required>
-          </div>
-          <div class="af-form__field" style="margin-bottom:1rem">
-            <label class="af-form__label">Amount to Request (USD)</label>
-            <input type="number" name="contact[body_amount]" class="af-form__input" placeholder="e.g. 145.00" min="50" step="0.01" required>
-          </div>
-          <div class="af-form__field" style="margin-bottom:1rem">
-            <label class="af-form__label">Payment Method</label>
-            <select name="contact[body_payment]" class="af-form__input af-form__select">
-              <option>PayPal</option>
-              <option>Bank Transfer (Australia)</option>
-              <option>Bank Transfer (International)</option>
-            </select>
-          </div>
-          <div class="af-form__field" style="margin-bottom:1rem">
-            <label class="af-form__label">PayPal Email or Bank Details</label>
-            <input type="text" name="contact[body_payment_details]" class="af-form__input" placeholder="PayPal email or BSB/Account number">
-          </div>
-          <div class="af-form__field" style="margin-bottom:1.5rem">
-            <label class="af-form__label">Invoice Notes (optional)</label>
-            <input type="text" name="contact[body]" class="af-form__input" placeholder="ABN, business name, or any notes for the invoice">
-          </div>
-          <button type="submit" class="af-btn af-btn--gold" style="width:100%;justify-content:center">Request Payout &amp; Invoice</button>
-          {% endif %}
-        {% endform %}
-      </div>
+            <div class="af-freq__card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="af-freq__card-body">
+              <p class="af-freq__card-title">Weekly</p>
+              <p class="af-freq__card-desc">Paid every Monday · Min. $50 per payout</p>
+              <div class="af-freq__example" id="example-weekly">
+                <span class="af-freq__example-label">Example: $200/mo balance</span>
+                <span class="af-freq__example-val">≈ $50 <em>every week</em></span>
+              </div>
+            </div>
+          </button>
 
-      <div class="af-payout__info">
-        <div class="af-payout__info-item">
-          <div class="af-payout__info-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <div><strong>Processing time</strong><br>7 business days from request</div>
+          <button type="button" class="af-freq__card" id="freq-monthly" onclick="selectFreq('monthly')">
+            <div class="af-freq__card-check" id="check-monthly" style="opacity:0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="af-freq__card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="af-freq__card-body">
+              <p class="af-freq__card-title">Monthly</p>
+              <p class="af-freq__card-desc">Paid on the 1st each month · Min. $50</p>
+              <div class="af-freq__example" id="example-monthly">
+                <span class="af-freq__example-label">Example: $200/mo balance</span>
+                <span class="af-freq__example-val">$200 <em>on the 1st</em></span>
+              </div>
+            </div>
+          </button>
+
         </div>
-        <div class="af-payout__info-item">
-          <div class="af-payout__info-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
-          <div><strong>Payment methods</strong><br>PayPal or bank transfer</div>
-        </div>
-        <div class="af-payout__info-item">
-          <div class="af-payout__info-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><strong>Invoice provided</strong><br>PDF invoice sent with every payout</div>
-        </div>
-        <div class="af-payout__info-item">
-          <div class="af-payout__info-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <div><strong>Minimum $50</strong><br>Balances below $50 roll to next month</div>
-        </div>
-        <div class="af-payout__support">
-          Questions? Email <a href="mailto:affiliates@sonoritysound.com">affiliates@sonoritysound.com</a>
+
+        <!-- Live breakdown preview -->
+        <div class="af-freq__preview">
+          <div class="af-freq__preview-row">
+            <span class="af-freq__preview-label">Your balance (enter below to preview)</span>
+            <span class="af-freq__preview-val" id="preview-freq-label">Weekly · paid every Monday</span>
+          </div>
+          <div class="af-freq__preview-bar">
+            <div class="af-freq__preview-seg" id="preview-bar-1"></div>
+            <div class="af-freq__preview-seg" id="preview-bar-2"></div>
+            <div class="af-freq__preview-seg" id="preview-bar-3"></div>
+            <div class="af-freq__preview-seg" id="preview-bar-4"></div>
+          </div>
+          <div class="af-freq__preview-dates" id="preview-dates">
+            <span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span>
+          </div>
         </div>
       </div>
 
+      <!-- Step 2: Request form -->
+      <div class="af-payout__form-section">
+        <p class="af-freq__label"><span class="af-freq__step">2</span> Submit your payout request</p>
+        <div class="af-payout__grid">
+          <div class="af-payout__card">
+            {% form 'contact' %}
+              {% if form.posted_successfully? %}
+                <div class="af-success af-success--small">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                  <p>Payout request received! We'll process within 3–7 business days and email your invoice.</p>
+                </div>
+              {% else %}
+              <input type="hidden" name="contact[subject]" value="Affiliate Payout Request">
+              <input type="hidden" name="contact[body_frequency]" id="hidden-frequency" value="Weekly">
+
+              <div class="af-payout__form-grid">
+                <div class="af-form__field">
+                  <label class="af-form__label">Name</label>
+                  <input type="text" name="contact[name]" class="af-form__input" value="{{ customer.first_name }} {{ customer.last_name }}" required>
+                </div>
+                <div class="af-form__field">
+                  <label class="af-form__label">Affiliate Email</label>
+                  <input type="email" name="contact[email]" class="af-form__input" value="{{ customer.email }}" required>
+                </div>
+                <div class="af-form__field">
+                  <label class="af-form__label">Amount to Request (USD)</label>
+                  <input type="number" name="contact[body_amount]" class="af-form__input" id="payout-amount-input" placeholder="e.g. 145.00" min="50" step="0.01" required>
+                </div>
+                <div class="af-form__field">
+                  <label class="af-form__label">Payout Frequency</label>
+                  <input type="text" class="af-form__input" id="freq-display" value="Weekly — every Monday" readonly style="color:#c9a84c;cursor:default">
+                </div>
+                <div class="af-form__field">
+                  <label class="af-form__label">Payment Method</label>
+                  <select name="contact[body_payment]" class="af-form__input af-form__select">
+                    <option>PayPal</option>
+                    <option>Bank Transfer (Australia)</option>
+                    <option>Bank Transfer (International)</option>
+                  </select>
+                </div>
+                <div class="af-form__field">
+                  <label class="af-form__label">PayPal Email or Bank Details</label>
+                  <input type="text" name="contact[body_payment_details]" class="af-form__input" placeholder="PayPal email or BSB / Account number">
+                </div>
+                <div class="af-form__field af-form__field--full">
+                  <label class="af-form__label">Invoice Notes (optional)</label>
+                  <input type="text" name="contact[body]" class="af-form__input" placeholder="ABN, business name, or any notes for the invoice">
+                </div>
+              </div>
+              <button type="submit" class="af-btn af-btn--gold af-btn--lg" style="margin-top:0.5rem">Request Payout &amp; Invoice</button>
+              {% endif %}
+            {% endform %}
+          </div>
+
+          <div class="af-payout__info">
+            <div class="af-payout__info-item">
+              <div class="af-payout__info-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div><strong>Weekly payouts</strong><br>Processed every Monday for the prior week's balance</div>
+            </div>
+            <div class="af-payout__info-item">
+              <div class="af-payout__info-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+              <div><strong>Monthly payouts</strong><br>Processed on the 1st for the full prior month's balance</div>
+            </div>
+            <div class="af-payout__info-item">
+              <div class="af-payout__info-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div><strong>Invoice included</strong><br>PDF invoice emailed automatically with every payout</div>
+            </div>
+            <div class="af-payout__info-item">
+              <div class="af-payout__info-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div><strong>Minimum $50 per payout</strong><br>Balances under $50 roll forward automatically</div>
+            </div>
+            <div class="af-payout__support">
+              Questions? Email <a href="mailto:affiliates@sonoritysound.com">affiliates@sonoritysound.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    {% else %}
+
+    <!-- NOT LOGGED IN STATE -->
+    <div class="af-payout__gate">
+      <div class="af-payout__gate-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+      </div>
+      <h3 class="af-payout__gate-title">Log in to manage your payouts</h3>
+      <p class="af-payout__gate-desc">Access your payout settings, choose weekly or monthly payments, and submit invoice requests — all from your account.</p>
+      <div class="af-payout__gate-actions">
+        <a href="/account/login?return_url=/pages/affiliate%23payout" class="af-btn af-btn--gold">Log In to My Account</a>
+        <a href="/account/register?return_url=/pages/affiliate%23payout" class="af-btn af-btn--outline">Create an Account</a>
+      </div>
+      <p class="af-payout__gate-note">Not an affiliate yet? <a href="#apply">Apply above</a> — it's free and takes 2 minutes.</p>
+    </div>
+
+    {% endif %}
+
   </div>
 </section>
 
@@ -512,6 +616,60 @@
   .af-success__body{font-size:0.85rem;color:#444;line-height:1.7;margin:0}
   .af-success--small{display:flex;align-items:center;gap:0.75rem;padding:1rem;background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:6px;font-size:0.8rem;color:#555;line-height:1.6}
 
+  /* ── Payout logged-in ── */
+  .af-payout-logged{display:flex;flex-direction:column;gap:2.5rem}
+  .af-payout__greeting{display:flex;align-items:center;gap:1rem;background:#0d0d0d;border:1px solid #1a1a1a;border-radius:8px;padding:1.1rem 1.5rem}
+  .af-payout__greeting-avatar{width:38px;height:38px;border-radius:50%;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#c9a84c;flex-shrink:0}
+  .af-payout__greeting-name{font-size:0.85rem;font-weight:700;color:#fff;margin:0 0 0.1rem}
+  .af-payout__greeting-email{font-size:0.72rem;color:#333;margin:0}
+  .af-payout__greeting-link{margin-left:auto;font-size:0.72rem;color:#333;text-decoration:none;transition:color 0.2s;white-space:nowrap}
+  .af-payout__greeting-link:hover{color:#c9a84c}
+
+  /* ── Frequency picker ── */
+  .af-freq-section{background:#0d0d0d;border:1px solid #1a1a1a;border-radius:10px;padding:2rem}
+  .af-freq__label{font-size:0.72rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.1em;margin:0 0 1.25rem;display:flex;align-items:center;gap:0.7rem}
+  .af-freq__step{width:22px;height:22px;border-radius:50%;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);display:inline-flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:#c9a84c;flex-shrink:0}
+  .af-freq__grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+  .af-freq__card{position:relative;background:#0a0a0a;border:1px solid #1e1e1e;border-radius:8px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;cursor:pointer;transition:border-color 0.2s,background 0.2s;text-align:left;font-family:inherit;width:100%}
+  .af-freq__card--active{border-color:#c9a84c;background:rgba(201,168,76,0.04)}
+  .af-freq__card-check{width:20px;height:20px;border-radius:50%;background:#c9a84c;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:opacity 0.2s}
+  .af-freq__card-icon{width:36px;height:36px;border-radius:6px;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#c9a84c}
+  .af-freq__card:not(.af-freq__card--active) .af-freq__card-icon{color:#2a2a2a;border-color:#1a1a1a;background:#0f0f0f}
+  .af-freq__card-body{flex:1;min-width:0}
+  .af-freq__card-title{font-size:0.92rem;font-weight:800;color:#fff;margin:0 0 0.25rem}
+  .af-freq__card:not(.af-freq__card--active) .af-freq__card-title{color:#333}
+  .af-freq__card-desc{font-size:0.72rem;color:#333;margin:0 0 0.85rem;line-height:1.5}
+  .af-freq__example{background:#111;border:1px solid #1a1a1a;border-radius:5px;padding:0.6rem 0.85rem;display:flex;flex-direction:column;gap:0.15rem}
+  .af-freq__example-label{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:#2a2a2a}
+  .af-freq__example-val{font-size:0.82rem;font-weight:700;color:#c9a84c}
+  .af-freq__example-val em{font-style:normal;color:#444;font-weight:400}
+
+  /* ── Preview bar ── */
+  .af-freq__preview{background:#0a0a0a;border:1px solid #161616;border-radius:6px;padding:1.25rem 1.5rem}
+  .af-freq__preview-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+  .af-freq__preview-label{font-size:0.68rem;color:#2a2a2a;text-transform:uppercase;letter-spacing:0.08em}
+  .af-freq__preview-val{font-size:0.72rem;color:#c9a84c;font-weight:600}
+  .af-freq__preview-bar{display:flex;gap:4px;height:8px;margin-bottom:0.5rem}
+  .af-freq__preview-seg{flex:1;border-radius:3px;background:rgba(201,168,76,0.25);transition:all 0.3s}
+  .af-freq__preview-seg.af-active{background:#c9a84c}
+  .af-freq__preview-dates{display:flex;justify-content:space-between}
+  .af-freq__preview-dates span{font-size:0.6rem;color:#222}
+
+  /* ── Payout form section ── */
+  .af-payout__form-section{background:#0d0d0d;border:1px solid #1a1a1a;border-radius:10px;padding:2rem}
+  .af-payout__form-section > .af-freq__label{margin-bottom:1.5rem}
+  .af-payout__form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}
+
+  /* ── Payout gate (not logged in) ── */
+  .af-payout__gate{text-align:center;padding:5rem 2rem;max-width:480px;margin:0 auto}
+  .af-payout__gate-icon{width:68px;height:68px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.18);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}
+  .af-payout__gate-title{font-size:1.3rem;font-weight:800;color:#fff;margin:0 0 0.75rem}
+  .af-payout__gate-desc{font-size:0.85rem;color:#3a3a3a;line-height:1.7;margin:0 0 2rem}
+  .af-payout__gate-actions{display:flex;flex-direction:column;gap:0.75rem;align-items:center}
+  .af-payout__gate-actions .af-btn{width:100%;justify-content:center}
+  .af-payout__gate-note{font-size:0.72rem;color:#222;margin-top:1.5rem;line-height:1.6}
+  .af-payout__gate-note a{color:#c9a84c;text-decoration:none}
+
   /* ── Responsive ── */
   @media(max-width:900px){
     .af-steps{flex-direction:column}.af-step__arrow{display:none}
@@ -522,6 +680,9 @@
     .af-rules__grid{grid-template-columns:1fr}
     .af-payout__grid{grid-template-columns:1fr}
     .af-form__grid{grid-template-columns:1fr}
+    .af-freq__grid{grid-template-columns:1fr}
+    .af-payout__form-grid{grid-template-columns:1fr}
+    .af-freq-section,.af-payout__form-section{padding:1.5rem}
   }
   @media(max-width:580px){
     .af-hero{padding:5rem 0 4rem}
@@ -570,4 +731,71 @@
   price.addEventListener('input', update);
   update();
 })();
+
+// ── Payout frequency picker ──
+var currentFreq = 'weekly';
+
+function selectFreq(freq) {
+  currentFreq = freq;
+  var weeklyCard  = document.getElementById('freq-weekly');
+  var monthlyCard = document.getElementById('freq-monthly');
+  var checkW      = document.getElementById('check-weekly');
+  var checkM      = document.getElementById('check-monthly');
+  var hiddenFreq  = document.getElementById('hidden-frequency');
+  var freqDisplay = document.getElementById('freq-display');
+  var previewLbl  = document.getElementById('preview-freq-label');
+  var dates       = document.getElementById('preview-dates');
+
+  if (freq === 'weekly') {
+    weeklyCard.classList.add('af-freq__card--active');
+    monthlyCard.classList.remove('af-freq__card--active');
+    checkW.style.opacity = '1';
+    checkM.style.opacity = '0';
+    if (hiddenFreq)  hiddenFreq.value  = 'Weekly';
+    if (freqDisplay) freqDisplay.value = 'Weekly — every Monday';
+    if (previewLbl)  previewLbl.textContent = 'Weekly · paid every Monday';
+    if (dates) dates.innerHTML = '<span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span>';
+  } else {
+    monthlyCard.classList.add('af-freq__card--active');
+    weeklyCard.classList.remove('af-freq__card--active');
+    checkM.style.opacity = '1';
+    checkW.style.opacity = '0';
+    if (hiddenFreq)  hiddenFreq.value  = 'Monthly';
+    if (freqDisplay) freqDisplay.value = 'Monthly — 1st of each month';
+    if (previewLbl)  previewLbl.textContent = 'Monthly · paid on the 1st';
+    if (dates) dates.innerHTML = '<span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span>';
+  }
+  updatePreviewBar();
+}
+
+function updatePreviewBar() {
+  var amountInput = document.getElementById('payout-amount-input');
+  var amount = amountInput ? parseFloat(amountInput.value) || 0 : 0;
+  var segs = [
+    document.getElementById('preview-bar-1'),
+    document.getElementById('preview-bar-2'),
+    document.getElementById('preview-bar-3'),
+    document.getElementById('preview-bar-4')
+  ];
+  if (!segs[0]) return;
+
+  if (currentFreq === 'weekly') {
+    var perWeek = amount / 4;
+    var active = perWeek >= 50 ? 4 : Math.floor(amount / 50);
+    segs.forEach(function(s, i) {
+      s.classList.toggle('af-active', i < active);
+      s.style.flex = '1';
+    });
+  } else {
+    segs.forEach(function(s, i) {
+      s.classList.toggle('af-active', i === 0 && amount >= 50);
+      s.style.flex = i === 0 ? '4' : '1';
+      s.style.opacity = i === 0 ? '1' : '0.15';
+    });
+  }
+}
+
+var amtInput = document.getElementById('payout-amount-input');
+if (amtInput) amtInput.addEventListener('input', updatePreviewBar);
+updatePreviewBar();
 </script>
