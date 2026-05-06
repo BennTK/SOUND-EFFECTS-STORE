@@ -174,7 +174,7 @@
   .ss-carousel-track {
     display: flex;
     flex-direction: row;
-    gap: 0;
+    gap: 1rem;
     width: 100%;
   }
 
@@ -183,14 +183,13 @@
     min-width: 0;
     background: #0e0e0e;
     border: 1px solid #1e1e1e;
-    border-right: none;
+    border-radius: 10px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     transition: background 0.2s;
   }
 
-  .ss-tcard:first-child { border-radius: 10px 0 0 10px; }
-  .ss-tcard:last-child  { border-right: 1px solid #1e1e1e; border-radius: 0 10px 10px 0; }
   .ss-tcard:hover { background: #111; }
 
   .ss-tcard__img {
