@@ -34,7 +34,7 @@
 
     <div class="sc-grid">
 
-      {%- assign packs = "Forest & Trees,drone-fly-bys-forest,forest,Sounds for flights through dense woodland and towering forest canopies|Rocks & Cliffs,drone-fly-bys-rocks-cliffs,rocks,Sounds for flights across rugged cliff faces and exposed rocky terrain|Waterfalls,drone-fly-bys-waterfalls,water,Sounds for flights past cascading waterfalls and rushing rapids|Insects,drone-fly-bys-insects,insects,Alive buzzing ambience for low flights through insect-rich natural environments|Wind,drone-fly-bys-wind,wind,Open-air sounds for high-altitude and windswept location flights|Rivers & Lakes,drone-fly-bys-rivers-lakes,rivers,Sounds for flights along flowing waterways and open lake surfaces|Ocean & Waves,drone-fly-bys-ocean-waves,ocean,Sounds for flights along dramatic coastlines and open ocean|Grass & Fields,drone-fly-bys-grass-fields,grass,Sounds for low flights across open meadows and wide grass fields|Generic Whooshes,drone-fly-bys-whooshes,whoosh,Clean directional whooshes for any aerial flyby or fast pass|Generic Vehicles,drone-fly-bys-vehicles,vehicles,Mechanical fly-by sounds for drones aircraft and vehicle pass-bys" | split: "|" -%}
+      {%- assign packs = "Forest & Trees,drone-fly-bys-forest,forest,Sounds for flights through dense woodland and towering forest canopies|Rocks & Cliffs,drone-fly-bys-rocks-cliffs,rocks,Sounds for flights across rugged cliff faces and exposed rocky terrain|Waterfalls,drone-fly-bys-waterfalls,water,Sounds for flights past cascading waterfalls and rushing rapids|Insects,drone-fly-bys-insects,insects,Alive buzzing ambience for low flights through insect-rich natural environments|Wind,drone-fly-bys-wind,wind,Open-air sounds for high-altitude and windswept location flights|Rivers & Lakes,drone-fly-bys-rivers-lakes,rivers,Sounds for flights along flowing waterways and open lake surfaces|Ocean & Waves,drone-fly-bys-ocean-waves,ocean,Sounds for flights along dramatic coastlines and open ocean|Grass & Fields,drone-fly-bys-grass-fields,grass,Sounds for low flights across open meadows and wide grass fields|Generic Whooshes,drone-fly-bys-whooshes,whoosh,Clean directional whooshes for any aerial flyby or fast pass|Generic Vehicles,drone-fly-bys-vehicles,vehicles,Mechanical fly-by sounds for drones aircraft and vehicle pass-bys|Arctic,drone-fly-bys-arctic,arctic,Sounds for flights across frozen tundra glaciers and towering ice structures|Buildings & Structures,drone-fly-bys-buildings-structures,buildings,Sounds for building dives structure passes and varied surface materials|Birds,drone-fly-bys-birds,birds,Species-accurate bird sounds from global regions to suit any nature aerial scene|Frogs,drone-fly-bys-frogs,frogs,Multi-species frog calls for marsh river and wetland nature flight scenes|Desert,drone-fly-bys-desert,desert,Sounds for flights across vast desert plains rolling sand dunes and arid terrain|Drone Audio,drone-fly-bys-drone-audio,drone-sfx,Motor beeps propeller sounds and clean FPV fly-bys for any drone footage" | split: "|" -%}
       {%- for pack in packs -%}
         {%- assign parts = pack | split: "," -%}
         {%- assign pack_name = parts[0] -%}
@@ -281,9 +281,15 @@
   .sc-card__img-placeholder--rivers  { background: linear-gradient(145deg, #060e18 0%, #08101e 50%, #040c14 100%); }
   .sc-card__img-placeholder--ocean   { background: url('{{ "drone-ocean.jpg" | asset_url }}') center/cover no-repeat; }
   .sc-card__img-placeholder--grass   { background: linear-gradient(145deg, #081408 0%, #0c1c0c 50%, #061006 100%); }
-  .sc-card__img-placeholder--whoosh  { background: linear-gradient(145deg, #100c14 0%, #18101e 50%, #0e0a12 100%); }
-  .sc-card__img-placeholder--vehicles{ background: linear-gradient(145deg, #100e08 0%, #18160c 50%, #0e0c08 100%); }
-  .sc-card__img-placeholder--future  { background: linear-gradient(145deg, #0e0e0e 0%, #141414 50%, #0a0a0a 100%); }
+  .sc-card__img-placeholder--whoosh    { background: linear-gradient(145deg, #100c14 0%, #18101e 50%, #0e0a12 100%); }
+  .sc-card__img-placeholder--vehicles  { background: linear-gradient(145deg, #100e08 0%, #18160c 50%, #0e0c08 100%); }
+  .sc-card__img-placeholder--arctic    { background: linear-gradient(145deg, #060c18 0%, #0a1224 50%, #060e1c 100%); }
+  .sc-card__img-placeholder--buildings { background: linear-gradient(145deg, #0e0e0c 0%, #161614 50%, #0c0c0a 100%); }
+  .sc-card__img-placeholder--birds     { background: linear-gradient(145deg, #080e06 0%, #0e160a 50%, #060c04 100%); }
+  .sc-card__img-placeholder--frogs     { background: linear-gradient(145deg, #050e07 0%, #081408 50%, #040c06 100%); }
+  .sc-card__img-placeholder--desert    { background: linear-gradient(145deg, #160e04 0%, #1e1406 50%, #140c04 100%); }
+  .sc-card__img-placeholder--drone-sfx { background: linear-gradient(145deg, #080a12 0%, #0e1020 50%, #060810 100%); }
+  .sc-card__img-placeholder--future    { background: linear-gradient(145deg, #0e0e0e 0%, #141414 50%, #0a0a0a 100%); }
 
   /* Add image icon overlay on placeholder */
   /* Centered title inside thumbnail */
