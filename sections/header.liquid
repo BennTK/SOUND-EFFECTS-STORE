@@ -39,6 +39,9 @@ Header & Navigation Section
         <li>
           <a href="/pages/support" class="nav-link{% if request.page_type == 'page' and page.handle == 'support' %} nav-link--active{% endif %}">Support</a>
         </li>
+        <li>
+          <a href="{% if customer %}/pages/my-downloads{% else %}/account/login?return_url=/pages/my-downloads{% endif %}" class="nav-link{% if request.page_type == 'page' and page.handle == 'my-downloads' %} nav-link--active{% endif %}">My Downloads</a>
+        </li>
       </ul>
     </nav>
 
@@ -52,6 +55,8 @@ Header & Navigation Section
         <li><a href="/pages/licensing" class="mobile-nav__link{% if request.page_type == 'page' and page.handle == 'licensing' %} mobile-nav__link--active{% endif %}">Licensing</a></li>
         <li><a href="/pages/affiliate" class="mobile-nav__link{% if request.page_type == 'page' and page.handle == 'affiliate' %} mobile-nav__link--active{% endif %}">Affiliate</a></li>
         <li><a href="/pages/support" class="mobile-nav__link{% if request.page_type == 'page' and page.handle == 'support' %} mobile-nav__link--active{% endif %}">Support</a></li>
+        <li><a href="{% if customer %}/pages/my-downloads{% else %}/account/login?return_url=/pages/my-downloads{% endif %}" class="mobile-nav__link{% if request.page_type == 'page' and page.handle == 'my-downloads' %} mobile-nav__link--active{% endif %}">My Downloads</a></li>
+        <li><a href="{% if customer %}/account{% else %}/account/login{% endif %}" class="mobile-nav__link">{% if customer %}My Account{% else %}Log In{% endif %}</a></li>
       </ul>
     </nav>
     
@@ -62,8 +67,14 @@ Header & Navigation Section
       <span></span>
     </button>
 
-    <!-- Right Icons (Search, Cart) -->
+    <!-- Right Icons (Account, Search, Cart) -->
     <div class="header-icons">
+      <a href="{% if customer %}/account{% else %}/account/login{% endif %}" class="icon-link account-icon" aria-label="{% if customer %}My account{% else %}Log in{% endif %}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+      </a>
       <a href="/search" class="icon-link search-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <circle cx="11" cy="11" r="8"></circle>

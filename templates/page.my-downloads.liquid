@@ -1,0 +1,216 @@
+<!-- Sonority Sound — My Downloads Page -->
+
+{% if customer %}
+
+<div class="dl-wrap">
+  <div class="dl-glow"></div>
+
+  <div class="dl-hero">
+    <p class="dl-eyebrow">Welcome back, {{ customer.first_name | upcase }}</p>
+    <h1 class="dl-title">Your Downloads</h1>
+    <p class="dl-sub">All your purchased Sonority Sound packs in one place. Click Download to access your files instantly.</p>
+  </div>
+
+  <div class="dl-body">
+
+    {% assign orders_with_items = 0 %}
+    {% for order in customer.orders %}
+      {% assign orders_with_items = orders_with_items | plus: 1 %}
+    {% endfor %}
+
+    {% if orders_with_items == 0 %}
+      <div class="dl-empty">
+        <div class="dl-empty__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <p class="dl-empty__title">No purchases yet</p>
+        <p class="dl-empty__sub">Once you buy a sound pack it will appear here for instant re-download.</p>
+        <a href="/collections/sound-effects" class="dl-btn dl-btn--gold" style="display:inline-flex;margin-top:1.5rem">Browse Sound Packs</a>
+      </div>
+
+    {% else %}
+
+      <div class="dl-summary">{{ orders_with_items }} order{{ orders_with_items | pluralize: '', 's' }} &middot; All downloads available below</div>
+
+      {% for order in customer.orders %}
+        <div class="dl-order">
+          <div class="dl-order__header">
+            <div>
+              <p class="dl-order__num">Order #{{ order.order_number }}</p>
+              <p class="dl-order__date">{{ order.created_at | date: "%d %b %Y" }}</p>
+            </div>
+            <span class="dl-order__badge dl-order__badge--{{ order.financial_status }}">{{ order.financial_status | upcase }}</span>
+          </div>
+
+          <div class="dl-order__items">
+            {% for line_item in order.line_items %}
+              <div class="dl-item">
+                <div class="dl-item__img-wrap">
+                  {% if line_item.image %}
+                    <img src="{{ line_item.image | img_url: '120x120', crop: 'center' }}" alt="{{ line_item.title }}" class="dl-item__img">
+                  {% else %}
+                    <div class="dl-item__img-placeholder">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                    </div>
+                  {% endif %}
+                </div>
+
+                <div class="dl-item__info">
+                  <p class="dl-item__name">{{ line_item.title | upcase }}</p>
+                  <p class="dl-item__meta">Digital Download &middot; Lifetime Access</p>
+                </div>
+
+                <div class="dl-item__action">
+                  {% if order.financial_status == 'paid' %}
+                    <a href="{{ order.customer_url }}" class="dl-btn dl-btn--gold" target="_blank">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      Download
+                    </a>
+                  {% else %}
+                    <span class="dl-btn dl-btn--disabled">Pending</span>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+
+    {% endif %}
+
+    <div class="dl-faq">
+      <p class="dl-faq__label">Download FAQ</p>
+      <div class="dl-faq__list">
+        <div class="dl-faq__item">
+          <p class="dl-faq__q">Do my downloads expire?</p>
+          <p class="dl-faq__a">Never. Your licence is permanent — re-download any time from this page.</p>
+        </div>
+        <div class="dl-faq__item">
+          <p class="dl-faq__q">I purchased but nothing shows here</p>
+          <p class="dl-faq__a">Make sure you're logged in with the same email you ordered with. If the issue persists, <a href="/pages/support">contact support</a>.</p>
+        </div>
+        <div class="dl-faq__item">
+          <p class="dl-faq__q">What file formats will I receive?</p>
+          <p class="dl-faq__a">All sound packs are delivered as high-quality <strong>WAV files</strong>, compressed as <strong>.zip</strong> for download.</p>
+        </div>
+      </div>
+
+      <div class="dl-support-card">
+        <div class="dl-support-card__icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <p class="dl-support-card__title">Need help with a download?</p>
+          <p class="dl-support-card__body">Email <a href="mailto:support@sonoritysound.com">support@sonoritysound.com</a> — we'll get back to you within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% else %}
+
+<!-- NOT LOGGED IN -->
+<div class="dl-gate">
+  <div class="dl-glow"></div>
+  <div class="dl-gate__inner">
+    <div class="dl-gate__icon">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+    </div>
+    <p class="dl-gate__eyebrow">My Downloads</p>
+    <h1 class="dl-gate__title">Access Your Purchases</h1>
+    <p class="dl-gate__sub">Log in to your account to view and re-download all your Sonority Sound packs instantly.</p>
+    <div class="dl-gate__actions">
+      <a href="/account/login?return_url=/pages/my-downloads" class="dl-btn dl-btn--gold">Log In to My Account</a>
+      <a href="/account/register?return_url=/pages/my-downloads" class="dl-btn dl-btn--outline">Create an Account</a>
+    </div>
+    <p class="dl-gate__note">Already purchased? Log in with the email address you used at checkout.</p>
+  </div>
+</div>
+
+{% endif %}
+
+<style>
+  /* ── Shared ── */
+  .dl-wrap,.dl-gate{background:#0a0a0a;min-height:80vh;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;position:relative;overflow-x:hidden}
+  .dl-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(201,168,76,0.06) 0%,transparent 65%);pointer-events:none;z-index:0}
+
+  /* ── Hero ── */
+  .dl-hero{max-width:900px;margin:0 auto;padding:5rem 2rem 3rem;text-align:center;position:relative;z-index:1}
+  .dl-eyebrow{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#c9a84c;font-weight:600;margin:0 0 1rem}
+  .dl-title{font-size:clamp(2.5rem,7vw,5rem);font-weight:900;color:#fff;letter-spacing:-0.04em;line-height:1;margin:0 0 1.25rem}
+  .dl-sub{font-size:0.9rem;color:#444;line-height:1.7;margin:0;max-width:500px;margin-left:auto;margin-right:auto}
+
+  /* ── Body ── */
+  .dl-body{max-width:900px;margin:0 auto;padding:0 2rem 6rem;position:relative;z-index:1}
+  .dl-summary{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:#333;margin-bottom:1.5rem}
+
+  /* ── Order card ── */
+  .dl-order{background:#0d0d0d;border:1px solid #1a1a1a;border-radius:8px;margin-bottom:1.5rem;overflow:hidden}
+  .dl-order__header{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.5rem;border-bottom:1px solid #141414}
+  .dl-order__num{font-size:0.85rem;font-weight:700;color:#fff;margin:0 0 0.2rem}
+  .dl-order__date{font-size:0.72rem;color:#333;margin:0}
+  .dl-order__badge{font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.7rem;border-radius:3px}
+  .dl-order__badge--paid{background:rgba(201,168,76,0.12);color:#c9a84c;border:1px solid rgba(201,168,76,0.2)}
+  .dl-order__badge--pending,.dl-order__badge--authorized{background:rgba(100,100,100,0.12);color:#555;border:1px solid #222}
+
+  /* ── Line item ── */
+  .dl-item{display:flex;align-items:center;gap:1.25rem;padding:1.25rem 1.5rem;border-bottom:1px solid #0f0f0f}
+  .dl-item:last-child{border-bottom:none}
+  .dl-item__img-wrap{width:56px;height:56px;border-radius:5px;overflow:hidden;flex-shrink:0;background:#111;border:1px solid #1a1a1a}
+  .dl-item__img{width:100%;height:100%;object-fit:cover;display:block}
+  .dl-item__img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+  .dl-item__info{flex:1;min-width:0}
+  .dl-item__name{font-size:0.82rem;font-weight:700;color:#fff;margin:0 0 0.3rem;line-height:1.3}
+  .dl-item__meta{font-size:0.68rem;color:#333;text-transform:uppercase;letter-spacing:0.08em;margin:0}
+  .dl-item__action{flex-shrink:0}
+
+  /* ── Buttons ── */
+  .dl-btn{display:inline-flex;align-items:center;gap:0.5rem;font-family:inherit;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:4px;padding:0.75rem 1.4rem;cursor:pointer;transition:background 0.2s,transform 0.15s,border-color 0.2s;border:none}
+  .dl-btn--gold{background:#c9a84c;color:#0a0a0a}.dl-btn--gold:hover{background:#d9b85c;transform:translateY(-1px)}
+  .dl-btn--outline{background:transparent;color:#fff;border:1px solid #2a2a2a}.dl-btn--outline:hover{border-color:#c9a84c;color:#c9a84c}
+  .dl-btn--disabled{background:#111;color:#333;border:1px solid #1a1a1a;cursor:default;display:inline-flex;align-items:center;font-family:inherit;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.75rem 1.4rem;border-radius:4px}
+
+  /* ── Empty state ── */
+  .dl-empty{text-align:center;padding:4rem 2rem}
+  .dl-empty__icon{width:60px;height:60px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
+  .dl-empty__title{font-size:1.1rem;font-weight:700;color:#fff;margin:0 0 0.5rem}
+  .dl-empty__sub{font-size:0.85rem;color:#444;margin:0;line-height:1.7}
+
+  /* ── FAQ ── */
+  .dl-faq{margin-top:3rem;padding-top:3rem;border-top:1px solid #111}
+  .dl-faq__label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#c9a84c;font-weight:600;margin:0 0 2rem}
+  .dl-faq__list{display:flex;flex-direction:column;gap:0}
+  .dl-faq__item{padding:1.5rem 0;border-bottom:1px solid #111}
+  .dl-faq__q{font-size:0.88rem;font-weight:700;color:#fff;margin:0 0 0.5rem}
+  .dl-faq__a{font-size:0.82rem;color:#444;line-height:1.7;margin:0}
+  .dl-faq__a a{color:#c9a84c;text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.25)}
+  .dl-faq__a strong{color:#666}
+
+  /* ── Support card ── */
+  .dl-support-card{display:flex;align-items:center;gap:1.25rem;margin-top:2.5rem;padding:1.5rem;background:#0d0d0d;border:1px solid #1a1a1a;border-radius:8px}
+  .dl-support-card__icon{width:44px;height:44px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .dl-support-card__title{font-size:0.85rem;font-weight:700;color:#fff;margin:0 0 0.3rem}
+  .dl-support-card__body{font-size:0.78rem;color:#444;margin:0;line-height:1.6}
+  .dl-support-card__body a{color:#c9a84c;text-decoration:none}
+
+  /* ── Gate (not logged in) ── */
+  .dl-gate{display:flex;align-items:center;justify-content:center;padding:2rem}
+  .dl-gate__inner{position:relative;z-index:1;text-align:center;max-width:480px;width:100%}
+  .dl-gate__icon{width:72px;height:72px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.18);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}
+  .dl-gate__eyebrow{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#c9a84c;font-weight:600;margin:0 0 0.75rem}
+  .dl-gate__title{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;color:#fff;letter-spacing:-0.03em;margin:0 0 1rem;line-height:1.1}
+  .dl-gate__sub{font-size:0.88rem;color:#444;line-height:1.7;margin:0 0 2rem}
+  .dl-gate__actions{display:flex;flex-direction:column;gap:0.75rem;align-items:center}
+  .dl-gate__actions .dl-btn{width:100%;justify-content:center}
+  .dl-gate__note{font-size:0.72rem;color:#2a2a2a;margin-top:1.5rem;line-height:1.6}
+
+  @media(max-width:640px){
+    .dl-item{flex-wrap:wrap}.dl-item__action{width:100%}.dl-btn{width:100%;justify-content:center}
+    .dl-support-card{flex-direction:column;text-align:center}
+  }
+</style>
