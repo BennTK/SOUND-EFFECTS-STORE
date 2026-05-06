@@ -34,12 +34,13 @@
 
     <div class="sc-grid">
 
-      {%- assign packs = "Forest & Trees,drone-fly-bys-forest,forest|Rocks & Cliffs,drone-fly-bys-rocks-cliffs,rocks|Waterfalls,drone-fly-bys-waterfalls,water|Insects,drone-fly-bys-insects,insects|Wind,drone-fly-bys-wind,wind|Rivers & Lakes,drone-fly-bys-rivers-lakes,rivers|Ocean & Waves,drone-fly-bys-ocean-waves,ocean|Grass & Fields,drone-fly-bys-grass-fields,grass|Generic Whooshes,drone-fly-bys-whooshes,whoosh|Generic Vehicles,drone-fly-bys-vehicles,vehicles" | split: "|" -%}
+      {%- assign packs = "Forest & Trees,drone-fly-bys-forest,forest,Sounds for flights through dense woodland and towering forest canopies|Rocks & Cliffs,drone-fly-bys-rocks-cliffs,rocks,Sounds for flights across rugged cliff faces and exposed rocky terrain|Waterfalls,drone-fly-bys-waterfalls,water,Sounds for flights past cascading waterfalls and rushing rapids|Insects,drone-fly-bys-insects,insects,Alive buzzing ambience for low flights through insect-rich natural environments|Wind,drone-fly-bys-wind,wind,Open-air sounds for high-altitude and windswept location flights|Rivers & Lakes,drone-fly-bys-rivers-lakes,rivers,Sounds for flights along flowing waterways and open lake surfaces|Ocean & Waves,drone-fly-bys-ocean-waves,ocean,Sounds for flights along dramatic coastlines and open ocean|Grass & Fields,drone-fly-bys-grass-fields,grass,Sounds for low flights across open meadows and wide grass fields|Generic Whooshes,drone-fly-bys-whooshes,whoosh,Clean directional whooshes for any aerial flyby or fast pass|Generic Vehicles,drone-fly-bys-vehicles,vehicles,Mechanical fly-by sounds for drones aircraft and vehicle pass-bys" | split: "|" -%}
       {%- for pack in packs -%}
         {%- assign parts = pack | split: "," -%}
         {%- assign pack_name = parts[0] -%}
         {%- assign pack_slug = parts[1] -%}
         {%- assign pack_class = parts[2] -%}
+        {%- assign pack_tagline = parts[3] -%}
         <a href="/pages/{{ pack_slug }}" class="sc-card">
           <div class="sc-card__img-wrap">
             <div class="sc-card__img-placeholder sc-card__img-placeholder--{{ pack_class }}"></div>
@@ -50,6 +51,7 @@
           <div class="sc-card__info">
             <div>
               <p class="sc-card__name">{{ pack_name }}</p>
+              <p class="sc-card__tagline">{{ pack_tagline }}</p>
               <p class="sc-card__category">Drone Fly Bys Collection</p>
             </div>
             <div class="sc-card__pricing">
@@ -351,13 +353,20 @@
     font-size: 0.88rem;
     font-weight: 600;
     color: #ccc;
-    margin: 0 0 0.2rem;
+    margin: 0 0 0.25rem;
     line-height: 1.3;
   }
 
+  .sc-card__tagline {
+    font-size: 0.7rem;
+    color: #444;
+    line-height: 1.45;
+    margin: 0 0 0.4rem;
+  }
+
   .sc-card__category {
-    font-size: 0.65rem;
-    color: #333;
+    font-size: 0.58rem;
+    color: #282828;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin: 0;
