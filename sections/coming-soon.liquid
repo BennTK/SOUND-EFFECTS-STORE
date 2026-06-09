@@ -1,0 +1,288 @@
+{%- comment -%}Spectra Sound — Coming Soon Homepage Section{%- endcomment -%}
+
+<style>
+  /* Hide header and footer on coming soon page */
+  #shopify-section-header,
+  #shopify-section-footer,
+  .site-header,
+  .site-footer,
+  header[role="banner"],
+  footer[role="contentinfo"],
+  .header-wrapper,
+  .footer-wrapper { display: none !important; }
+
+  body { background: #0a0a0a !important; margin: 0 !important; }
+
+  /* ── Glows ── */
+  .cs-glow-top {
+    position: fixed;
+    top: -180px; left: 50%;
+    transform: translateX(-50%);
+    width: 1000px; height: 600px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.10) 0%, transparent 65%);
+    pointer-events: none; z-index: 0;
+  }
+  .cs-glow-bottom {
+    position: fixed;
+    bottom: -120px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 400px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.04) 0%, transparent 65%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .cs-page {
+    background: #0a0a0a;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, sans-serif;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .cs-wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 620px;
+    padding: 3rem 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ── Logo ── */
+  .cs-logo {
+    display: flex; align-items: center; gap: 0.65rem;
+    margin-bottom: 3.5rem;
+  }
+  .cs-logo__icon {
+    width: 34px; height: 34px;
+    border: 1.5px solid rgba(201,168,76,0.45);
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(201,168,76,0.04);
+  }
+  .cs-logo__text {
+    font-size: 1rem; font-weight: 800;
+    letter-spacing: 0.2em; text-transform: uppercase; color: #fff;
+  }
+
+  /* ── Badge ── */
+  .cs-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 100px; padding: 0.38rem 1.1rem;
+    font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase; color: #c9a84c;
+    margin-bottom: 1.75rem;
+  }
+  .cs-badge__dot {
+    width: 5px; height: 5px; background: #c9a84c;
+    border-radius: 50%; animation: cs-pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes cs-pulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50%      { opacity:0.3; transform:scale(0.65); }
+  }
+
+  /* ── Headline ── */
+  .cs-headline {
+    font-size: clamp(3rem, 11vw, 5.5rem);
+    font-weight: 900; line-height: 0.92;
+    letter-spacing: -0.04em; color: #fff;
+    margin-bottom: 1.75rem;
+  }
+  .cs-headline span {
+    display: block;
+    background: linear-gradient(135deg, #c9a84c 0%, #e8cc7a 45%, #c9a84c 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .cs-sub {
+    font-size: 0.96rem; color: #444; line-height: 1.8;
+    max-width: 430px; margin-bottom: 2.75rem;
+  }
+
+  .cs-divider {
+    width: 40px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── Email section ── */
+  .cs-email-section { width: 100%; margin-bottom: 2.5rem; }
+  .cs-email-label {
+    font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase; color: #c9a84c; margin-bottom: 1.1rem;
+  }
+  .cs-email-form { display: flex; gap: 0.6rem; width: 100%; }
+  .cs-email-form input[type="email"] {
+    flex: 1; min-width: 0;
+    background: #0e0e0e; border: 1px solid #1a1a1a; border-radius: 7px;
+    padding: 0.95rem 1.25rem; color: #fff;
+    font-family: inherit; font-size: 0.88rem; outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .cs-email-form input[type="email"]::placeholder { color: #2c2c2c; }
+  .cs-email-form input[type="email"]:focus {
+    border-color: rgba(201,168,76,0.45);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.06);
+  }
+  .cs-email-form button {
+    background: #c9a84c; color: #0a0a0a; border: none; border-radius: 7px;
+    padding: 0.95rem 1.6rem; font-family: inherit; font-size: 0.78rem;
+    font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; white-space: nowrap; flex-shrink: 0;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .cs-email-form button:hover { background: #e8cc7a; transform: translateY(-1px); }
+  .cs-email-form button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .cs-form-msg { min-height: 1.1rem; font-size: 0.75rem; margin-top: 0.65rem; }
+  .cs-form-msg--error   { color: #b05050; }
+
+  /* ── Success card ── */
+  .cs-success-card {
+    display: none; flex-direction: column; align-items: center; gap: 0.85rem;
+    padding: 2rem 1.5rem;
+    background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.18);
+    border-radius: 12px; width: 100%;
+    animation: cs-fadeIn 0.4s ease;
+  }
+  .cs-success-card.show { display: flex; }
+  @keyframes cs-fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+  .cs-success-icon {
+    width: 48px; height: 48px;
+    background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  }
+  .cs-success-title { font-size: 1rem; font-weight: 800; color: #fff; }
+  .cs-success-sub { font-size: 0.78rem; color: #444; line-height: 1.7; max-width: 360px; }
+
+  /* ── Trust ── */
+  .cs-trust {
+    display: flex; align-items: center; justify-content: center;
+    gap: 1.5rem; flex-wrap: wrap; margin-bottom: 3rem;
+  }
+  .cs-trust__item {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-size: 0.62rem; color: #282828; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .cs-trust__item svg { opacity: 0.35; }
+
+  /* ── Footer ── */
+  .cs-foot {
+    font-size: 0.58rem; color: #1e1e1e;
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+
+  @media (max-width: 500px) {
+    .cs-email-form { flex-direction: column; }
+    .cs-trust { gap: 1rem; }
+  }
+</style>
+
+<div class="cs-page">
+  <div class="cs-glow-top"></div>
+  <div class="cs-glow-bottom"></div>
+
+  <div class="cs-wrap">
+
+    <div class="cs-logo">
+      <div class="cs-logo__icon">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+        </svg>
+      </div>
+      <span class="cs-logo__text">Spectra Sound</span>
+    </div>
+
+    <div class="cs-badge"><span class="cs-badge__dot"></span>Coming Soon</div>
+
+    <h1 class="cs-headline">Sound Effects<br><span>Redefined.</span></h1>
+
+    <p class="cs-sub">Premium drone fly-by sound effects for creators who demand the best. Cinematic-grade WAV audio, instant download, royalty-free forever. Launching soon — be the first to know.</p>
+
+    <div class="cs-divider"></div>
+
+    <div class="cs-email-section" id="cs-email-section">
+      <p class="cs-email-label">Get early access &amp; a launch discount</p>
+
+      <form class="cs-email-form" id="cs-signup-form" novalidate>
+        <input type="email" id="cs-email-input" placeholder="Your email address" autocomplete="email" required>
+        <button type="submit" id="cs-submit-btn">Notify Me</button>
+      </form>
+      <p class="cs-form-msg" id="cs-form-msg" aria-live="polite"></p>
+
+      <div class="cs-success-card" id="cs-success-card">
+        <div class="cs-success-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p class="cs-success-title">You're on the list.</p>
+        <p class="cs-success-sub">We'll notify you the moment Spectra Sound launches — along with an exclusive early-access discount.</p>
+      </div>
+    </div>
+
+    <div class="cs-trust">
+      <div class="cs-trust__item"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Royalty-Free</div>
+      <div class="cs-trust__item"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>WAV Quality</div>
+      <div class="cs-trust__item"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Instant Download</div>
+      <div class="cs-trust__item"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Commercial License</div>
+    </div>
+
+    <p class="cs-foot">&copy; 2026 Spectra Sound. All rights reserved.</p>
+
+  </div>
+</div>
+
+{% javascript %}
+(function () {
+  var ML_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiZmFhNzZkZWU1M2Q1NzBiNDMyOGYwZDlmNDZlYWQ5OWJkNmFhOTdlMzRlZTAyYjVjNTQ1OTVjMDg0OWVmNWM4YjMyMzQ4N2MwODI3M2M5OTIiLCJpYXQiOjE3ODA5NzYzMjUuMzI5NjEyLCJuYmYiOjE3ODA5NzYzMjUuMzI5NjE0LCJleHAiOjQ5MzY2NDk5MjUuMzI1MzYyLCJzdWIiOiIyNDM2NzI1Iiwic2NvcGVzIjpbXX0.xJcGScU4TPzhrmMB2l4VGViQHx5egwusWqGoNAUSIjb7joNCz22JI9wozHOMeAO7LT6ZxlP-30YLTKXQw2XXTT2t2Ev8Tgim2mv88Uur0hjPJug01A7Z9J0w0jfRh_vEXX-Tp8WQyJA7l9xmvsUiBHD7ja3DLJ1yHTjpM6nVBH43EVucqjZBfAFu0Y1jLMcr_AAETl6c73dPOnjLTUS8mPH4AKg-lstuGwE9BbORdoGtg4mDck0DFGzDZwv3CSx6RbC6FYljA_y7bLZBolKYcF09q44BvQVRlCdW73-CfTfO6PcBHljZs4WY9sSsSt0YY7Ma13xg6hz4Gq9sf3eSMYpzi7nGPsrmTLsExkHzU64JVrkL6MaIDbx40JlW25S1cO-5Pe84FdLySeMPmOIsXAe6HM7h32GlwIt8lYztT2h514Vuf78IWlBN4eZnXdk__N-fJG6Yg9h4vglTC1ezb4Sb_y0r4wFdtMVA7CrXMnT0wUoXwBdMIz08qzHwqpcGAcO1g08_gvHeTMkpWz0yX0EJDxWsasrBrhPPz6bz_f-hxGeR9bLo0OrOmK0tp7Zcbh2QQoYM78GxC0fAMTELoLWgpoEQ-91yNJ3vVDIn4tn9azg6CQj8YvgUNtVxvyjFS3g-COLHUcmQXO-Foh4MLmr9oH1UmoeYwcuTCjDQ_vo';
+  var ML_GROUP = '189766928641820360';
+
+  var form        = document.getElementById('cs-signup-form');
+  var input       = document.getElementById('cs-email-input');
+  var btn         = document.getElementById('cs-submit-btn');
+  var msg         = document.getElementById('cs-form-msg');
+  var successCard = document.getElementById('cs-success-card');
+
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = input.value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      msg.textContent = 'Please enter a valid email address.';
+      msg.className = 'cs-form-msg cs-form-msg--error';
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    msg.textContent = '';
+
+    fetch('https://connect.mailerlite.com/api/subscribers', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + ML_TOKEN },
+      body: JSON.stringify({ email: email, groups: [ML_GROUP] })
+    })
+    .then(function (res) {
+      if (res.status === 200 || res.status === 201 || res.status === 409) {
+        form.style.display = 'none';
+        msg.textContent = '';
+        successCard.classList.add('show');
+      } else { throw new Error(); }
+    })
+    .catch(function () {
+      btn.disabled = false;
+      btn.textContent = 'Notify Me';
+      msg.textContent = 'Something went wrong — please try again.';
+      msg.className = 'cs-form-msg cs-form-msg--error';
+    });
+  });
+})();
+{% endjavascript %}
