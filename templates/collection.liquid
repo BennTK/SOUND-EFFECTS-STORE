@@ -272,25 +272,54 @@
     pointer-events: none;
   }
 
-  /* Environment colour gradients as placeholders */
-  .sc-card__img-placeholder--forest  { background: url('{{ "forest-trees-cover.jpg" | asset_url }}') center/cover no-repeat; }
-  .sc-card__img-placeholder--rocks   { background: url('{{ "rocks-cliffs-cover.jpg" | asset_url }}') center/cover no-repeat; }
-  .sc-card__img-placeholder--water   { background: linear-gradient(145deg, #080e18 0%, #0a1220 50%, #060c16 100%); }
-  .sc-card__img-placeholder--insects { background: linear-gradient(145deg, #0e1208 0%, #141a0c 50%, #0a0e06 100%); }
-  .sc-card__img-placeholder--wind    { background: linear-gradient(145deg, #0c0e14 0%, #10121c 50%, #080a10 100%); }
-  .sc-card__img-placeholder--rivers  { background: linear-gradient(145deg, #060e18 0%, #08101e 50%, #040c14 100%); }
-  .sc-card__img-placeholder--ocean   { background: url('{{ "drone-ocean.jpg" | asset_url }}') center/cover no-repeat; }
-  .sc-card__img-placeholder--grass   { background: linear-gradient(145deg, #081408 0%, #0c1c0c 50%, #061006 100%); }
-  .sc-card__img-placeholder--whoosh    { background: linear-gradient(145deg, #100c14 0%, #18101e 50%, #0e0a12 100%); }
-  .sc-card__img-placeholder--vehicles  { background: linear-gradient(145deg, #100e08 0%, #18160c 50%, #0e0c08 100%); }
-  .sc-card__img-placeholder--arctic    { background: linear-gradient(145deg, #060c18 0%, #0a1224 50%, #060e1c 100%); }
-  .sc-card__img-placeholder--buildings { background: linear-gradient(145deg, #0e0e0c 0%, #161614 50%, #0c0c0a 100%); }
-  .sc-card__img-placeholder--birds     { background: linear-gradient(145deg, #080e06 0%, #0e160a 50%, #060c04 100%); }
-  .sc-card__img-placeholder--frogs     { background: linear-gradient(145deg, #050e07 0%, #081408 50%, #040c06 100%); }
-  .sc-card__img-placeholder--desert    { background: linear-gradient(145deg, #160e04 0%, #1e1406 50%, #140c04 100%); }
-  .sc-card__img-placeholder--drone-sfx { background: linear-gradient(145deg, #080a12 0%, #0e1020 50%, #060810 100%); }
-  .sc-card__img-placeholder--volcanic  { background: linear-gradient(145deg, #180a04 0%, #200c06 50%, #140804 100%); }
-  .sc-card__img-placeholder--future    { background: linear-gradient(145deg, #0e0e0e 0%, #141414 50%, #0a0a0a 100%); }
+  /* Cover art images */
+  .sc-card__img-placeholder--forest   { background: url('{{ "forest-trees-cover.jpg" | asset_url }}') center/cover no-repeat; }
+  .sc-card__img-placeholder--rocks    { background: url('{{ "rocks-cliffs-cover.jpg" | asset_url }}') center/cover no-repeat; }
+  .sc-card__img-placeholder--water    { background: url('{{ "waterfalls-cover.jpg" | asset_url }}') center/cover no-repeat; }
+  .sc-card__img-placeholder--wind     { background: url('{{ "wind-cover.jpg" | asset_url }}') center/cover no-repeat; }
+  .sc-card__img-placeholder--ocean    { background: url('{{ "ocean-waves-cover.jpg" | asset_url }}') center/cover no-repeat; }
+  .sc-card__img-placeholder--grass    { background: url('{{ "grass-fields-cover.jpg" | asset_url }}') center/cover no-repeat; }
+  .sc-card__img-placeholder--whoosh   { background: url('{{ "whooshes-cover.jpg" | asset_url }}') center/cover no-repeat; }
+
+  /* Gradient placeholders — packs without cover art yet */
+  .sc-card__img-placeholder--insects  { background: linear-gradient(145deg, #0e1208 0%, #141a0c 50%, #0a0e06 100%); }
+  .sc-card__img-placeholder--rivers   { background: linear-gradient(145deg, #060e18 0%, #08101e 50%, #040c14 100%); }
+  .sc-card__img-placeholder--vehicles { background: linear-gradient(145deg, #100e08 0%, #18160c 50%, #0e0c08 100%); }
+  .sc-card__img-placeholder--arctic   { background: linear-gradient(145deg, #060c18 0%, #0a1224 50%, #060e1c 100%); }
+  .sc-card__img-placeholder--buildings{ background: linear-gradient(145deg, #0e0e0c 0%, #161614 50%, #0c0c0a 100%); }
+  .sc-card__img-placeholder--birds    { background: linear-gradient(145deg, #080e06 0%, #0e160a 50%, #060c04 100%); }
+  .sc-card__img-placeholder--frogs    { background: linear-gradient(145deg, #050e07 0%, #081408 50%, #040c06 100%); }
+  .sc-card__img-placeholder--desert   { background: linear-gradient(145deg, #160e04 0%, #1e1406 50%, #140c04 100%); }
+  .sc-card__img-placeholder--drone-sfx{ background: linear-gradient(145deg, #080a12 0%, #0e1020 50%, #060810 100%); }
+  .sc-card__img-placeholder--volcanic { background: linear-gradient(145deg, #180a04 0%, #200c06 50%, #140804 100%); }
+  .sc-card__img-placeholder--future   { background: linear-gradient(145deg, #0e0e0e 0%, #141414 50%, #0a0a0a 100%); }
+
+  /* "In Production" label on gradient placeholders */
+  .sc-card__img-placeholder--insects::after,
+  .sc-card__img-placeholder--rivers::after,
+  .sc-card__img-placeholder--vehicles::after,
+  .sc-card__img-placeholder--arctic::after,
+  .sc-card__img-placeholder--buildings::after,
+  .sc-card__img-placeholder--birds::after,
+  .sc-card__img-placeholder--frogs::after,
+  .sc-card__img-placeholder--desert::after,
+  .sc-card__img-placeholder--drone-sfx::after,
+  .sc-card__img-placeholder--volcanic::after {
+    content: 'IN PRODUCTION';
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 3px;
+    padding: 0.25rem 0.6rem;
+    white-space: nowrap;
+    pointer-events: none;
+  }
 
   /* Add image icon overlay on placeholder */
   /* Centered title inside thumbnail */
